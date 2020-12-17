@@ -21,15 +21,6 @@ namespace OriginsMusic.Tiles.MusicBoxes {
 			AddMapEntry(new Color(255, 255, 255), name);
 		}
 
-		public class Music_Box_DW_Item : ModItem {
-			public override void SetStaticDefaults() {
-				DisplayName.SetDefault("Music Box (Defiled Wastelands)");
-		}
-			public override void SetDefaults() {
-				item.accessory = true;
-			}
-		}
-
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) {
 		}
 
@@ -37,6 +28,15 @@ namespace OriginsMusic.Tiles.MusicBoxes {
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
+		}
+	}
+
+	public class Music_Box_DW_Item : ModItem {
+		public override void SetStaticDefaults() {
+			DisplayName.SetDefault("Music Box (Defiled Wastelands)");
+	}
+		public override void SetDefaults() {
+			item.accessory = true;
 		}
 	}
 }

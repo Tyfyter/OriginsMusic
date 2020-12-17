@@ -26,19 +26,19 @@ namespace OriginsMusic.Tiles.MusicBoxes
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) {
 		}
 
-		public class Music_Box_DC_Item : ModItem {
-			public override void SetStaticDefaults() {
-				DisplayName.SetDefault("Music Box (Defiled Caverns)");
-			}
-			public override void SetDefaults() {
-				item.accessory = true;
-			}
-		}
 
 		public override void MouseOver(int i, int j) {
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
+		}
+	}
+	public class Music_Box_DC_Item : ModItem {
+		public override void SetStaticDefaults() {
+			DisplayName.SetDefault("Music Box (Defiled Caverns)");
+		}
+		public override void SetDefaults() {
+			item.accessory = true;
 		}
 	}
 }
