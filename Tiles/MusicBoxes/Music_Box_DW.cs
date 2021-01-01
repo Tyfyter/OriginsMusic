@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using static Terraria.ModLoader.ModContent;
@@ -21,8 +22,8 @@ namespace OriginsMusic.Tiles.MusicBoxes {
 			AddMapEntry(new Color(255, 255, 255), name);
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY) {
-		}
+		/*public override void KillMultiTile(int i, int j, int frameX, int frameY) {
+		}*/
 
 		public override void MouseOver(int i, int j) {
 			Player player = Main.LocalPlayer;
@@ -34,9 +35,10 @@ namespace OriginsMusic.Tiles.MusicBoxes {
 	public class Music_Box_DW_Item : ModItem {
 		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Music Box (Defiled Wastelands)");
-	}
+	    }
 		public override void SetDefaults() {
-			item.accessory = true;
+            item.CloneDefaults(ItemID.MusicBoxCorruption);
+            item.createTile = ModContent.TileType<Music_Box_DW>();
 		}
 	}
 }
