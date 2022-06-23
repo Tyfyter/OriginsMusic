@@ -2,23 +2,23 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.5": {
-      "tModLoader.CodeAssist/0.1.1": {
+      "tModLoader.CodeAssist/0.1.5": {
         "type": "package"
       }
     }
   },
   "libraries": {
-    "tModLoader.CodeAssist/0.1.1": {
-      "sha512": "bUQ4HAiRYq8Zisms7FI9ffSf4nZHwFFZU5j8Hpc/9rFB16GOGJg2ulHV0ZDErzoAAbXBeRdO8/VbSltBwmDcpA==",
+    "tModLoader.CodeAssist/0.1.5": {
+      "sha512": "Sg/jKEg/z5eN+Cdi3/9CU4JfJwvXHVH+UDJf4Lipo26uTa+guLLJXH1XDJNPShTFwKK8jMUYbthINP4QhsgHSA==",
       "type": "package",
-      "path": "tmodloader.codeassist/0.1.1",
+      "path": "tmodloader.codeassist/0.1.5",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "NugetIcon.png",
         "analyzers/dotnet/cs/tModLoader.CodeAssist.dll",
-        "tmodloader.codeassist.0.1.1.nupkg.sha512",
+        "tmodloader.codeassist.0.1.5.nupkg.sha512",
         "tmodloader.codeassist.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
@@ -31,23 +31,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tyfyter\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\atomb\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tyfyter\\Documents\\My Games\\Terraria\\OriginTML\\Mod Sources\\OriginsMusic\\OriginsMusic.csproj",
+      "projectUniqueName": "C:\\Users\\atomb\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\OriginsMusic.csproj",
       "projectName": "OriginsMusic",
-      "projectPath": "C:\\Users\\Tyfyter\\Documents\\My Games\\Terraria\\OriginTML\\Mod Sources\\OriginsMusic\\OriginsMusic.csproj",
-      "packagesPath": "C:\\Users\\Tyfyter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tyfyter\\Documents\\My Games\\Terraria\\OriginTML\\Mod Sources\\OriginsMusic\\obj\\",
+      "projectPath": "C:\\Users\\atomb\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\OriginsMusic.csproj",
+      "packagesPath": "C:\\Users\\atomb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\atomb\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Tyfyter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\atomb\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -59,6 +55,7 @@
       },
       "frameworks": {
         "net45": {
+          "targetAlias": "net45",
           "projectReferences": {}
         }
       },
@@ -70,12 +67,14 @@
     },
     "frameworks": {
       "net45": {
+        "targetAlias": "net45",
         "dependencies": {
           "tModLoader.CodeAssist": {
             "target": "Package",
             "version": "[0.1.*, )"
           }
-        }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
