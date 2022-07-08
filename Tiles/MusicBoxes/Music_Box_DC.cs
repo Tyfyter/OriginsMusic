@@ -10,7 +10,7 @@ namespace OriginsMusic.Tiles.MusicBoxes
 {
 	internal class Music_Box_DC : ModTile
 	{
-		public override void SetDefaults() {
+		public override void SetStaticDefaults() {
 			Main.tileFrameImportant[Type] = true;
 			Main.tileObsidianKill[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
@@ -18,7 +18,7 @@ namespace OriginsMusic.Tiles.MusicBoxes
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.DrawYOffset = 2;
 			TileObjectData.addTile(Type);
-			disableSmartCursor = true;
+			disableSmartCursor/* tModPorter Note: Removed. Use TileID.Sets.DisableSmartCursor instead */ = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Music Box");
 			AddMapEntry(new Color(255, 255, 255), name);
@@ -31,7 +31,7 @@ namespace OriginsMusic.Tiles.MusicBoxes
 		public override void MouseOver(int i, int j) {
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
-			player.showItemIcon = true;
+			player.cursorItemIconEnabled = true;
 		}
 	}
 	public class Music_Box_DC_Item : ModItem {
@@ -39,8 +39,8 @@ namespace OriginsMusic.Tiles.MusicBoxes
 			DisplayName.SetDefault("Music Box (Defiled Caverns)");
 		}
 		public override void SetDefaults() {
-            item.CloneDefaults(ItemID.MusicBoxCorruption);
-            item.createTile = ModContent.TileType<Music_Box_DC>();
+            Item.CloneDefaults(ItemID.MusicBoxCorruption);
+            Item.createTile = ModContent.TileType<Music_Box_DC>();
 		}
 	}
 }
