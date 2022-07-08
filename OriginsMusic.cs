@@ -8,9 +8,14 @@ namespace OriginsMusic {
     public class OriginsMusic : Mod {
 		public override void Load(){
 			if (!Main.dedServ) {
-				Music.Dusk = new SoundStyle("Sounds/Music/Dancing_With_Ghosts", SoundType.Music);
-				MusicLoader.AddMusicBox(Music.Defiled = new SoundStyle("Sounds/Music/Shattered_Topography", ModContent.ItemType<Music_Box_DW_Item>(), ModContent.TileType<Music_Box_DW>(), SoundType.Music));
-				MusicLoader.AddMusicBox(Music.UndergroundDefiled = new SoundStyle("Sounds/Music/Heart_Of_The_Beast", ModContent.ItemType<Music_Box_DC_Item>(), ModContent.TileType<Music_Box_DC>(), SoundType.Music));
+				Music.Dusk = MusicLoader.MusicCount;
+				MusicLoader.AddMusic(this, "Sounds/Music/Dancing_With_Ghosts");
+
+				MusicLoader.AddMusic(this, "Sounds/Music/Shattered_Topography");
+				MusicLoader.AddMusicBox(this, Music.Defiled = MusicLoader.MusicCount - 1, ModContent.ItemType<Music_Box_DW_Item>(), ModContent.TileType<Music_Box_DW>());
+
+				MusicLoader.AddMusic(this, "Sounds/Music/Heart_Of_The_Beast");
+				MusicLoader.AddMusicBox(this, Music.UndergroundDefiled = MusicLoader.MusicCount - 1, ModContent.ItemType<Music_Box_DC_Item>(), ModContent.TileType<Music_Box_DC>());
 			}
 		}
 	}
