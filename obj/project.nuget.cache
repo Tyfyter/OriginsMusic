@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "z+b6A+CwC7nekqBvwk5RX4xTf71sF9yDJ29Jq66WqkC9d3EQA54RTXx3RTPqBjgo0BwM126M7I/AjQyyvL9JBA==",
+  "dgSpecHash": "PlVpbF8AEPlyFS1PQYxHYfrQcuJvo0/gxTSPEj0eRxp+FBz7yfd9XR39MuqgvM1RRUZUcqhqp66UWnvtLpLk3g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tyfyter\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\OriginsMusic.csproj",
+  "projectFilePath": "C:\\Users\\atomb\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\OriginsMusic.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Tyfyter\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+    "C:\\Users\\atomb\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
   ],
   "logs": []
 }

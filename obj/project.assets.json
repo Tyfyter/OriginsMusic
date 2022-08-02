@@ -31,30 +31,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tyfyter\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\atomb\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tyfyter\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\OriginsMusic.csproj",
+      "projectUniqueName": "C:\\Users\\atomb\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\OriginsMusic.csproj",
       "projectName": "OriginsMusic",
-      "projectPath": "C:\\Users\\Tyfyter\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\OriginsMusic.csproj",
-      "packagesPath": "C:\\Users\\Tyfyter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tyfyter\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\obj\\",
+      "projectPath": "C:\\Users\\atomb\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\OriginsMusic.csproj",
+      "packagesPath": "C:\\Users\\atomb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\atomb\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\OriginsMusic\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Tyfyter\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\atomb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
