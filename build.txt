@@ -3,3 +3,4 @@ author = Chee & Tyfyter2002
 version = 0.1
 modReferences = Origins
 sortAfter = Origins
+side = Client
