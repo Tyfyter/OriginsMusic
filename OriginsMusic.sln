@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1209
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33801.447
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OriginsMusic", "OriginsMusic.csproj", "{19006ACD-445E-4374-B552-C3F98CEEC784}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Origins", "..\Origins\Origins.csproj", "{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{66C06920-A7F7-407C-AE71-F87F458C8076}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{19006ACD-445E-4374-B552-C3F98CEEC784}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19006ACD-445E-4374-B552-C3F98CEEC784}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19006ACD-445E-4374-B552-C3F98CEEC784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4} = {66C06920-A7F7-407C-AE71-F87F458C8076}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AF9855D5-A9A4-4280-A744-6DDFFF7A86B5}

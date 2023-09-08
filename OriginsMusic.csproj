@@ -11,8 +11,9 @@
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Origins">
-      <HintPath>..\Mod Libraries\Origins_v0.3.dll</HintPath>
-    </Reference>
+    <Folder Include="Tiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Origins\Origins.csproj" />
   </ItemGroup>
 </Project>
