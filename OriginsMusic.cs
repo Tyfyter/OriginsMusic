@@ -27,12 +27,24 @@ namespace OriginsMusic {
 				}
 				musicByPath ??= new("musicByPath", BindingFlags.NonPublic);
 				musicExtensions ??= new("musicExtensions", BindingFlags.NonPublic);
-				//LoadMusic("Sounds/Music/Dancing_With_Ghosts", Music.Dusk);
+				LoadMusic("Sounds/Music/Only_the_Brave", ".wav", Music.BrinePool);
+
+                LoadMusic("Sounds/Music/Dancing_With_Ghosts", ".wav", Music.Dusk);
 
 				LoadMusic("Sounds/Music/Shattered_Topography", ".ogg", Music.Defiled);
 
 				LoadMusic("Sounds/Music/Heart_Of_The_Beast", ".ogg", Music.UndergroundDefiled);
-			}
+
+                LoadMusic("Sounds/Music/On_the_Hunt", ".wav", Music.DefiledBoss);
+
+                LoadMusic("Sounds/Music/Pereunt_Unum_Scindendum", ".wav", Music.Riven);
+
+                LoadMusic("Sounds/Music/Pereunt_Unum_Scindendum", ".wav", Music.UndergroundRiven);
+
+                LoadMusic("Sounds/Music/Dew_of_Venus", ".wav", Music.RivenBoss);
+
+                LoadMusic("Sounds/Music/Sizzling_Waves", ".wav", Music.RivenOcean);
+            }
 		}
 		public override void Unload() {
 			musicByPath = null;
