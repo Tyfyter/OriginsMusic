@@ -29,25 +29,25 @@ namespace OriginsMusic {
 				musicByPath ??= new("musicByPath", BindingFlags.NonPublic);
 				musicExtensions ??= new("musicExtensions", BindingFlags.NonPublic);
 				MusicLoader_LoadMusic ??= typeof(MusicLoader).GetMethod("LoadMusic", BindingFlags.NonPublic | BindingFlags.Static).CreateDelegate<Func<string, string, IAudioTrack>>();
-                LoadMusic("Sounds/Music/Legacy/The_Room_Before", ".wav", Music.Fiberglass);
+                LoadMusic("Sounds/Music/Legacy/The_Room_Before", ".ogg", Music.Fiberglass);
 
-                LoadMusic("Sounds/Music/Legacy/Only_the_Brave", ".wav", Music.BrinePool);
+                LoadMusic("Sounds/Music/Legacy/Only_the_Brave", ".ogg", Music.BrinePool);
 
-                LoadMusic("Sounds/Music/Legacy/Dancing_With_Ghosts", ".wav", Music.Dusk);
+                LoadMusic("Sounds/Music/Legacy/Dancing_With_Ghosts", ".ogg", Music.Dusk);
 
 				LoadMusic("Sounds/Music/Shattered_Topography", ".ogg", Music.Defiled);
 
-				LoadMusic("Sounds/Music/Heart_Of_The_Beast", ".ogg", Music.UndergroundDefiled);
+				LoadMusic("Sounds/Music/Heart_of_the_Beast", ".ogg", Music.UndergroundDefiled);
 
-                LoadMusic("Sounds/Music/Legacy/On_the_Hunt", ".wav", Music.DefiledBoss);
+                LoadMusic("Sounds/Music/Legacy/On_the_Hunt", ".ogg", Music.DefiledBoss);
 
                 LoadMusic("Sounds/Music/Pereunt_Unum_Scindendum", ".ogg", Music.Riven);
 
-                LoadMusic("Sounds/Music/Pereunt_Unum_Scindendum", ".ogg", Music.UndergroundRiven);
+                LoadMusic("Sounds/Music/Festering_Hives", ".ogg", Music.UndergroundRiven);
 
-                LoadMusic("Sounds/Music/Dew_of_Venus", ".wav", Music.RivenBoss);
+                LoadMusic("Sounds/Music/Dew_of_Venus", ".ogg", Music.RivenBoss);
 
-                LoadMusic("Sounds/Music/Sizzling_Waves", ".wav", Music.RivenOcean);
+                LoadMusic("Sounds/Music/Sizzling_Waves", ".ogg", Music.RivenOcean);
             }
 		}
 		public override void Unload() {
