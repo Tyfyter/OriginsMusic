@@ -13,6 +13,7 @@ namespace OriginsMusic {
 		static FastStaticFieldInfo<MusicLoader, Dictionary<string, int>> musicByPath;
 		static FastStaticFieldInfo<MusicLoader, Dictionary<string, string>> musicExtensions;
 		static FastStaticFieldInfo<MusicLoader, int> MusicCount_BackingField;
+		static Func<string, string, IAudioTrack> MusicLoader_LoadMusic;
 		static int MusicCount {
 			get => (MusicCount_BackingField ??= new("<MusicCount>k__BackingField", BindingFlags.NonPublic)).GetValue();
 			set => (MusicCount_BackingField ??= new("<MusicCount>k__BackingField", BindingFlags.NonPublic)).SetValue(value);
@@ -27,6 +28,7 @@ namespace OriginsMusic {
 				}
 				musicByPath ??= new("musicByPath", BindingFlags.NonPublic);
 				musicExtensions ??= new("musicExtensions", BindingFlags.NonPublic);
+				MusicLoader_LoadMusic ??= typeof(MusicLoader).GetMethod("LoadMusic", BindingFlags.NonPublic | BindingFlags.Static).CreateDelegate<Func<string, string, IAudioTrack>>();
                 LoadMusic("Sounds/Music/Legacy/The_Room_Before", ".wav", Music.Fiberglass);
 
                 LoadMusic("Sounds/Music/Legacy/Only_the_Brave", ".wav", Music.BrinePool);
@@ -60,7 +62,7 @@ namespace OriginsMusic {
 				musicByPath.GetValue()[Name + "/" + path] = id;
 				musicExtensions.GetValue()[Name + "/" + path] = extension;
 				if (Main.audioSystem is LegacyAudioSystem audioSystem) {
-					audioSystem.AudioTracks[id] = null;
+					audioSystem.AudioTracks[id] = MusicLoader_LoadMusic(Name + "/" + path, extension);
 				}
 				MusicLoader.AddMusic(this, path);
 			} finally {
