@@ -35,7 +35,7 @@ namespace OriginsMusic {
 
                 LoadMusic("Sounds/Music/Dancing_With_Ghosts", ".ogg", Music.Dusk);
 
-				LoadMusic("Sounds/Music/Shattered_Topography", ".ogg", Music.Defiled);
+				LoadMusic("Sounds/Music/Stolen_Memories", ".ogg", Music.Defiled);
 
 				LoadMusic("Sounds/Music/Heart_of_the_Beast", ".ogg", Music.UndergroundDefiled);
 
