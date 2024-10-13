@@ -48,7 +48,11 @@ namespace OriginsMusic {
                 LoadMusic("Sounds/Music/Dew_of_Venus", ".ogg", Music.RivenBoss);
 
                 LoadMusic("Sounds/Music/Sizzling_Waves", ".ogg", Music.RivenOcean);
-            }
+
+				LoadMusic("Sounds/Music/Shattered_Topography_Old", ".ogg", Music.AncientDefiled);
+
+				LoadMusic("Sounds/Music/Festering_Hives", ".ogg", Music.AncientRiven);
+			}
 		}
 		public override void Unload() {
 			musicByPath = null;
