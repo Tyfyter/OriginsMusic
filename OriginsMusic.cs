@@ -45,7 +45,7 @@ namespace OriginsMusic {
 
                 LoadMusic("Sounds/Music/Festering_Hives", ".ogg", Music.UndergroundRiven);
 
-                LoadMusic("Sounds/Music/Dew_of_Venus", ".ogg", Music.RivenBoss);
+                LoadMusic("Sounds/Music/Ad_Laceratur", ".ogg", Music.RivenBoss);
 
                 LoadMusic("Sounds/Music/Sizzling_Waves", ".ogg", Music.RivenOcean);
 
