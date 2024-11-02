@@ -7,6 +7,7 @@ using System.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using System.Linq;
 
 namespace OriginsMusic {
     public class OriginsMusic : Mod {
@@ -53,11 +54,25 @@ namespace OriginsMusic {
 
 				LoadMusic("Sounds/Music/Festering_Hives", ".ogg", Music.AncientRiven);
 			}
+			MonoModHooks.Add(
+				typeof(MusicLoader).GetMethod("CloseModStreams", BindingFlags.NonPublic | BindingFlags.Static),
+				(Action<Mod> orig, Mod mod) => {
+					if (tracks.Count > 0) {
+						for (int i = 0; i < tracks.Count; i++) {
+							tracks[i]?.Dispose();
+						}
+						tracks.Clear();
+					}
+					orig(mod);
+				}
+			);
 		}
+		readonly List<IAudioTrack> tracks = [];
 		public override void Unload() {
 			musicByPath = null;
 			musicExtensions = null;
 			MusicCount_BackingField = null;
+			
 		}
 		internal void LoadMusic(string path, string extension, int id) {
 			int currentMusicCount = MusicCount;
@@ -65,8 +80,9 @@ namespace OriginsMusic {
 				MusicCount = id;
 				musicByPath.GetValue()[Name + "/" + path] = id;
 				musicExtensions.GetValue()[Name + "/" + path] = extension;
+				tracks.Add(MusicLoader_LoadMusic(Name + "/" + path, extension));
 				if (Main.audioSystem is LegacyAudioSystem audioSystem) {
-					audioSystem.AudioTracks[id] = MusicLoader_LoadMusic(Name + "/" + path, extension);
+					audioSystem.AudioTracks[id] = tracks[^1];
 				}
 				MusicLoader.AddMusic(this, path);
 			} finally {
