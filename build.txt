@@ -1,6 +1,6 @@
 displayName = Origins Music
-author = Chee & Tyfyter2002
-version = 0.1
+author = Tyfyter2002 and chrersis
+version = 0.2.1
 modReferences = Origins
 sortAfter = Origins
 side = Client

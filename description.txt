@@ -1,1 +1,5 @@
-Origins Music is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Companion mod to the (main) Origins Mod. Using it alone adds no content, and the music boxes are obtainable without this mod being enabled (they just play a vanilla placeholder).
+
+Mod repository: https://github.com/Tyfyter/OriginsMusic
+
+Soundtrack on chrersis' SoundCloud: https://soundcloud.com/user-523569744/sets/terraria-origins-official
