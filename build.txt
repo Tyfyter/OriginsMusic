@@ -4,3 +4,4 @@ version = 0.2.1
 modReferences = Origins
 sortAfter = Origins
 side = Client
+buildIgnore = *.csproj, *.xcf, *.user, obj\*, bin\*, .vs\*, Uncompressed\*, Sounds\Music\Legacy\*
