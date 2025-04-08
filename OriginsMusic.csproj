@@ -6,11 +6,11 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tiles\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Origins\Origins.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PegasusLib">
+      <HintPath>..\ModAssemblies\PegasusLib_v1.0.4.7.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

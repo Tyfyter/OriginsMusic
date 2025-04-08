@@ -1,1 +1,3 @@
-
+MusicLoadingException: Error while loading track {0}, the track may not be loaded
+SlotLoadingException: Error while loading track slot {0}, some tracks may not be loaded
+Tracks.TestMusicTrack.DisplayName: Test Music Track

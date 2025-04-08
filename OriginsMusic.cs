@@ -1,149 +1,73 @@
-using System.IO;
-using Terraria;
-using Terraria.Audio;
-using Terraria.ModLoader;
-using static Origins.Origins;
-using System.Reflection;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Reflection.Emit;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
+using Terraria.ModLoader;
 
 namespace OriginsMusic {
-    public class OriginsMusic : Mod {
-		static FastStaticFieldInfo<MusicLoader, Dictionary<string, int>> musicByPath;
-		static FastStaticFieldInfo<MusicLoader, Dictionary<string, string>> musicExtensions;
-		static FastStaticFieldInfo<MusicLoader, int> MusicCount_BackingField;
-		static Func<string, string, IAudioTrack> MusicLoader_LoadMusic;
-		static int MusicCount {
-			get => (MusicCount_BackingField ??= new("<MusicCount>k__BackingField", BindingFlags.NonPublic)).GetValue();
-			set => (MusicCount_BackingField ??= new("<MusicCount>k__BackingField", BindingFlags.NonPublic)).SetValue(value);
-		}
-		public OriginsMusic() : base() {
+	public class OriginsMusic : Mod {
+		public static List<(INeedToLoadLate loader, Mod mod)> tracksToLoad = [];
+		public static MultiDictionary<TrackSlot, AMusicTrack> tracksBySlot = [];
+		public static List<TrackSet> trackSets = [];
+		public OriginsMusic() {
 			MusicAutoloadingEnabled = false;
 		}
 		public override void Load() {
-			if (!Main.dedServ) {
-				if (Main.audioSystem is not LegacyAudioSystem) {
-					return;
-				}
-				musicByPath ??= new("musicByPath", BindingFlags.NonPublic);
-				musicExtensions ??= new("musicExtensions", BindingFlags.NonPublic);
-				MusicLoader_LoadMusic ??= typeof(MusicLoader).GetMethod("LoadMusic", BindingFlags.NonPublic | BindingFlags.Static).CreateDelegate<Func<string, string, IAudioTrack>>();
-                LoadMusic("Sounds/Music/The_Room_Before", ".ogg", Music.Fiberglass);
-
-                LoadMusic("Sounds/Music/Only_the_Brave", ".ogg", Music.BrinePool);
-
-                LoadMusic("Sounds/Music/Dancing_With_Ghosts", ".ogg", Music.Dusk);
-
-				LoadMusic("Sounds/Music/Stolen_Memories", ".ogg", Music.Defiled);
-
-				LoadMusic("Sounds/Music/Heart_Of_The_Beast", ".ogg", Music.UndergroundDefiled);
-
-                LoadMusic("Sounds/Music/ADJUDICATE", ".ogg", Music.DefiledBoss);
-
-                LoadMusic("Sounds/Music/Pereunt_Unum_Scindendum", ".ogg", Music.Riven);
-
-                LoadMusic("Sounds/Music/Festering_Hives", ".ogg", Music.UndergroundRiven);
-
-                LoadMusic("Sounds/Music/Ad_Laceratur", ".ogg", Music.RivenBoss);
-
-                LoadMusic("Sounds/Music/Sizzling_Waves", ".ogg", Music.RivenOcean);
-
-				LoadMusic("Sounds/Music/Shattered_Topography_Old", ".ogg", Music.AncientDefiled);
-
-				LoadMusic("Sounds/Music/Festering_Hives", ".ogg", Music.AncientRiven);
-			}
-			MonoModHooks.Add(
-				typeof(MusicLoader).GetMethod("CloseModStreams", BindingFlags.NonPublic | BindingFlags.Static),
-				(Action<Mod> orig, Mod mod) => {
-					if (tracks.Count > 0) {
-						for (int i = 0; i < tracks.Count; i++) {
-							tracks[i]?.Dispose();
-						}
-						tracks.Clear();
-					}
-					orig(mod);
-				}
-			);
-		}
-		readonly List<IAudioTrack> tracks = [];
-		public override void Unload() {
-			musicByPath = null;
-			musicExtensions = null;
-			MusicCount_BackingField = null;
-			
-		}
-		internal void LoadMusic(string path, string extension, int id) {
-			int currentMusicCount = MusicCount;
-			try {
-				MusicCount = id;
-				musicByPath.GetValue()[Name + "/" + path] = id;
-				musicExtensions.GetValue()[Name + "/" + path] = extension;
-				tracks.Add(MusicLoader_LoadMusic(Name + "/" + path, extension));
-				if (Main.audioSystem is LegacyAudioSystem audioSystem) {
-					audioSystem.AudioTracks[id] = tracks[^1];
-				}
-				MusicLoader.AddMusic(this, path);
-			} finally {
-				MusicCount = currentMusicCount;
+			for (int i = 0; i < tracksToLoad.Count; i++) {
+				tracksToLoad[i].LoadLate();
 			}
 		}
 	}
-	public class FastStaticFieldInfo<TParent, T> : FastStaticFieldInfo<T> {
-		public FastStaticFieldInfo(string name, BindingFlags bindingFlags, bool init = false) : base(typeof(TParent), name, bindingFlags, init) { }
+	internal static class LateLoadExtension {
+		public static void LoadLate(this (INeedToLoadLate loader, Mod mod) loader) => loader.loader.LoadLate(loader.mod);
 	}
-	public class FastStaticFieldInfo<T> {
-		public readonly FieldInfo field;
-		Func<T> getter;
-		Action<T> setter;
-		public FastStaticFieldInfo(Type type, string name, BindingFlags bindingFlags, bool init = false) {
-			field = type.GetField(name, bindingFlags | BindingFlags.Static);
-			if (field is null) throw new InvalidOperationException($"No such static field {name} exists");
-			if (init) {
-				getter = CreateGetter();
-				setter = CreateSetter();
-			}
+	public class MultiDictionary<TKey, TValue>(IEqualityComparer<TKey> comparer) : IDictionary<TKey, List<TValue>> {
+		public MultiDictionary() : this(null) { }
+		readonly Dictionary<TKey, List<TValue>> backingDictionary = new(comparer);
+		public List<TValue> this[TKey key] {
+			get => backingDictionary[key];
+			set => backingDictionary[key] = value;
 		}
-		public FastStaticFieldInfo(FieldInfo field, bool init = false) {
-			if (!field.IsStatic) throw new InvalidOperationException($"field {field.Name} is not static");
-			this.field = field;
-			if (init) {
-				getter = CreateGetter();
-				setter = CreateSetter();
-			}
+		public ICollection<TKey> Keys => backingDictionary.Keys;
+		public ICollection<List<TValue>> Values => backingDictionary.Values;
+		public int Count => backingDictionary.Count;
+		public bool IsReadOnly => false;
+		public void Add(TKey key, TValue value) {
+			if (!backingDictionary.TryGetValue(key, out List<TValue> list)) backingDictionary[key] = list = [];
+			list.Add(value);
 		}
-		public T GetValue() {
-			return (getter ??= CreateGetter())();
+		public void Add(TKey key, List<TValue> value) {
+			backingDictionary.Add(key, value);
 		}
-		public void SetValue(T value) {
-			(setter ??= CreateSetter())(value);
+		public void Add(KeyValuePair<TKey, List<TValue>> item) {
+			((ICollection<KeyValuePair<TKey, List<TValue>>>)backingDictionary).Add(item);
 		}
-		private Func<T> CreateGetter() {
-			if (field.FieldType != typeof(T)) throw new InvalidOperationException($"type of {field.Name} does not match provided type {typeof(T)}");
-			string methodName = field.ReflectedType.FullName + ".get_" + field.Name;
-			DynamicMethod getterMethod = new DynamicMethod(methodName, typeof(T), new Type[] { }, true);
-			ILGenerator gen = getterMethod.GetILGenerator();
+		public void Clear() {
+			backingDictionary.Clear();
+		}
+		public bool Contains(KeyValuePair<TKey, List<TValue>> item) {
+			return ((ICollection<KeyValuePair<TKey, List<TValue>>>)backingDictionary).Contains(item);
+		}
+		public bool ContainsKey(TKey key) {
+			return backingDictionary.ContainsKey(key);
+		}
+		public void CopyTo(KeyValuePair<TKey, List<TValue>>[] array, int arrayIndex) {
+			((ICollection<KeyValuePair<TKey, List<TValue>>>)backingDictionary).CopyTo(array, arrayIndex);
+		}
+		public IEnumerator<KeyValuePair<TKey, List<TValue>>> GetEnumerator() {
+			return (backingDictionary).GetEnumerator();
+		}
+		public bool Remove(TKey key) {
+			return backingDictionary.Remove(key);
+		}
+		public bool Remove(KeyValuePair<TKey, List<TValue>> item) {
+			return ((ICollection<KeyValuePair<TKey, List<TValue>>>)backingDictionary).Remove(item);
+		}
+		public bool TryGetValue(TKey key, [MaybeNullWhen(false)] out List<TValue> value) {
+			return backingDictionary.TryGetValue(key, out value) && value.Count > 0;
+		}
 
-			gen.Emit(OpCodes.Ldsfld, field);
-			gen.Emit(OpCodes.Ret);
-
-			return (Func<T>)getterMethod.CreateDelegate(typeof(Func<T>));
-		}
-		private Action<T> CreateSetter() {
-			if (field.FieldType != typeof(T)) throw new InvalidOperationException($"type of {field.Name} does not match provided type {typeof(T)}");
-			string methodName = field.ReflectedType.FullName + ".set_" + field.Name;
-			DynamicMethod setterMethod = new DynamicMethod(methodName, null, new Type[] { typeof(T) }, true);
-			ILGenerator gen = setterMethod.GetILGenerator();
-
-			gen.Emit(OpCodes.Ldarg_0);
-			gen.Emit(OpCodes.Stsfld, field);
-			gen.Emit(OpCodes.Ret);
-
-			return (Action<T>)setterMethod.CreateDelegate(typeof(Action<T>));
-		}
-		public static explicit operator T(FastStaticFieldInfo<T> fastFieldInfo) {
-			return fastFieldInfo.GetValue();
+		IEnumerator IEnumerable.GetEnumerator() {
+			return ((IEnumerable)backingDictionary).GetEnumerator();
 		}
 	}
 }
