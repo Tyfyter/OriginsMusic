@@ -1,3 +1,36 @@
 MusicLoadingException: Error while loading track {0}, the track may not be loaded
 SlotLoadingException: Error while loading track slot {0}, some tracks may not be loaded
-Tracks.TestMusicTrack.DisplayName: Test Music Track
+OptionDescription:
+	'''
+	{0}
+	by {1}
+	'''
+
+Tracks: {
+	TestMusicTrack.DisplayName: Test Music Track
+
+	Abstract: {
+		DisplayName: Abstract
+		Subtitle: Origins Music
+	}
+
+	Stolen_Memories: {
+		DisplayName: Stolen Memories
+		Subtitle: Origins Music
+	}
+
+	DefiledTrackSlot.DisplayName: Defiled Track Slot
+}
+
+"Composers.I forgor": I forgor
+
+Configs: {
+	OriginsMusicConfig: {
+		DisplayName: Origins Music Config
+
+		trackChoices: {
+			Label: track Choices
+			Tooltip: ""
+		}
+	}
+}
