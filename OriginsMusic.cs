@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace OriginsMusic {
 	public class OriginsMusic : Mod {
 		public static List<(INeedToLoadLate loader, Mod mod)> tracksToLoad = [];
 		public static MultiDictionary<TrackSlot, AMusicTrack> tracksBySlot = [];
+		public static Dictionary<int, AMusicTrack> tracksByID = [];
 		public static List<TrackSet> trackSets = [];
 		public static List<TrackSlot> slotsToShow = [];
 		public OriginsMusic() {
@@ -19,8 +21,18 @@ namespace OriginsMusic {
 			}
 			trackSets.Sort();
 			slotsToShow = tracksBySlot.Keys.Where(tracksBySlot.ContainsKey).Order().ToList();
-			foreach (List<AMusicTrack> item in tracksBySlot.Values) item.Sort();
+			foreach (List<AMusicTrack> item in tracksBySlot.Values) {
+				item.Sort();
+				for (int i = 0; i < item.Count; i++) {
+					if (item[i].TrackID != 0) tracksByID.Add(item[i].TrackID, item[i]);
+				}
+			}
 			AddConfig(nameof(OriginsMusicConfig), new OriginsMusicConfig());
+		}
+	}
+	public class TrackUpdater : ModSystem {
+		public override void PostUpdatePlayers() {
+			if (OriginsMusic.tracksByID.TryGetValue(Main.LocalPlayer.CurrentSceneEffect.music.value, out AMusicTrack track)) track.UpdatePlaying();
 		}
 	}
 	internal static class LateLoadExtension {

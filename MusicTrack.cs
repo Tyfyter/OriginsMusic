@@ -21,9 +21,10 @@ namespace OriginsMusic {
 		public abstract int TrackID { get; protected set; }
 		public Mod Mod { get; protected set; }
 		public string FullName => $"{Mod.Name}/{Name}";
-		protected void Register(Mod mod) {
+		protected void Register() {
 			ModTypeLookup<AMusicTrack>.Register(this);
 		}
+		public virtual void UpdatePlaying() { }
 		public void SetActive() {
 			TrackSlot.TrackController = TrackID;
 		}
@@ -45,7 +46,7 @@ namespace OriginsMusic {
 				TrackSlot trackSlot = TrackSlot;
 				if (trackSlot is null) return;
 				LoadTrack();
-				Register(mod);
+				Register();
 				OriginsMusic.tracksBySlot.Add(trackSlot, this);
 				if (ModLoader.TryGetMod("MusicDisplay", out Mod musicDisplay)) {
 					musicDisplay.Call("AddMusic",
