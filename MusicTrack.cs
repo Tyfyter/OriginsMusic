@@ -26,9 +26,9 @@ namespace OriginsMusic {
 		}
 		public virtual void UpdatePlaying() { }
 		public void SetActive() {
-			TrackSlot.TrackController = TrackID;
+			TrackSlot.SetTrack(TrackID);
 		}
-		public bool IsActive => TrackSlot.TrackController == TrackID;
+		public bool IsActive => TrackSlot.IsTrackActive(TrackID);
 		public int CompareTo(AMusicTrack other) => SortingIndex.CompareTo(other.SortingIndex);
 	}
 	public abstract class MusicTrack<TTrackSlot> : AMusicTrack, ILoadable, INeedToLoadLate where TTrackSlot : TrackSlot {
@@ -83,8 +83,7 @@ namespace OriginsMusic {
 		public virtual LocalizedText Description => Language.GetOrRegister($"Mods.OriginsMusic.TrackSlots.{Name}.Description", () => "");
 		public virtual int SortingIndex => 0;
 		[NoJIT]
-		public abstract ref int TrackController { get; }
-
+		protected abstract ref int TrackController { get; }
 		public Mod Mod { get; private set; }
 		public string FullName => $"{Mod.Name}/{Name}";
 		public void Load(Mod mod) {
@@ -98,6 +97,8 @@ namespace OriginsMusic {
 				if (LogSlotLoadingError(this, e)) throw;
 			}
 		}
+		public virtual void SetTrack(int TrackID) => TrackController = TrackID;
+		public virtual bool IsTrackActive(int TrackID) => TrackController == TrackID;
 		public void Unload() { }
 		public int CompareTo(TrackSlot other) => SortingIndex.CompareTo(other.SortingIndex);
 		[NoJIT]
