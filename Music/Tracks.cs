@@ -87,10 +87,6 @@ namespace OriginsMusic.Music {
 		protected override ref int TrackController => ref Slot.AncientRiven;
 		public override int SortingIndex => 8;
 	}
-	public class Festering_Hives_Ancient : MusicTrack<AncientRivenTrackSlot> {
-		public override string TrackLocation => typeof(Festering_Hives).GetDefaultTMLName();
-		public override Composer Composer { get; } = Chee;
-	}
 	#endregion
 	#region Fiberglass
 	public record class FiberglassTrackSlot : TrackSlot {
