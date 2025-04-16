@@ -19,10 +19,200 @@ Tracks: {
 		Subtitle: Origins Music
 	}
 
-	DefiledTrackSlot.DisplayName: Defiled Track Slot
+	Ad_Laceratur: {
+		DisplayName: Ad Laceratur
+		Subtitle: Origins Music
+	}
+
+	Alkahest: {
+		DisplayName: Alkahest
+		Subtitle: Origins Music
+	}
+
+	Below_The_Brine: {
+		DisplayName: Below The Brine
+		Subtitle: Origins Music
+	}
+
+	Dancing_With_Ghosts: {
+		DisplayName: Dancing With Ghosts
+		Subtitle: Origins Music
+	}
+
+	Deep_Luminance: {
+		DisplayName: Deep Luminance
+		Subtitle: Origins Music
+	}
+
+	Dread_Heart: {
+		DisplayName: Dread Heart
+		Subtitle: Origins Music
+	}
+
+	Festering_Hives: {
+		DisplayName: Festering Hives
+		Subtitle: Origins Music
+	}
+
+	Festering_Hives_Ancient: {
+		DisplayName: Festering Hives Ancient
+		Subtitle: Origins Music
+	}
+
+	Frayed_And_Stretched: {
+		DisplayName: Frayed And Stretched
+		Subtitle: Origins Music
+	}
+
+	Heart_Of_The_Beast: {
+		DisplayName: Heart Of The Beast
+		Subtitle: Origins Music
+	}
+
+	Internal_Organism: {
+		DisplayName: Internal Organism
+		Subtitle: Origins Music
+	}
+
+	Only_the_Brave: {
+		DisplayName: Only_the Brave
+		Subtitle: Origins Music
+	}
+
+	Pereunt_Unum_Scindendum: {
+		DisplayName: Pereunt Unum Scindendum
+		Subtitle: Origins Music
+	}
+
+	Shattered_Topography_Old: {
+		DisplayName: Shattered Topography Old
+		Subtitle: Origins Music
+	}
+
+	Skin: {
+		DisplayName: Skin
+		Subtitle: Origins Music
+	}
+
+	Skulking: {
+		DisplayName: Skulking
+		Subtitle: Origins Music
+	}
+
+	The_Room_Before: {
+		DisplayName: The Room Before
+		Subtitle: Origins Music
+	}
+
+	This_Ocean_Of_Alkahest: {
+		DisplayName: This Ocean Of Alkahest
+		Subtitle: Origins Music
+	}
+
+	Wasteland: {
+		DisplayName: Wasteland
+		Subtitle: Origins Music
+	}
+
+	ADJUDICATE: {
+		DisplayName: ADJUDICATE
+		Subtitle: Origins Music
+	}
+
+	ARBITRATE: {
+		DisplayName: ARBITRATE
+		Subtitle: Origins Music
+	}
 }
 
-"Composers.I forgor": I forgor
+TrackSets: {
+	DefaultTrackSet: {
+		DisplayName: Default Tracks
+		Description: ""
+	}
+
+	CheeTrackSet: {
+		DisplayName: by {$Mods.OriginsMusic.Composers.Chee}
+		Description: ""
+	}
+
+	GojiTrackSet: {
+		DisplayName: by {$Mods.OriginsMusic.Composers.Goji}
+		Description: ""
+	}
+}
+
+TrackSlots: {
+	DefiledTrackSlot: {
+		DisplayName: "{§Defiled_Wastelands}"
+		Description: ""
+	}
+
+	UndergroundDefiledTrackSlot: {
+		DisplayName: Underground {§Defiled_Wastelands}
+		Description: ""
+	}
+
+	DefiledBossTrackSlot: {
+		DisplayName: "{§Mods.Origins.NPCs.Defiled_Amalgamation.DisplayName}"
+		Description: ""
+	}
+
+	AncientDefiledTrackSlot: {
+		DisplayName: Ancient {§Defiled_Wastelands} Music Box
+		Description: ""
+	}
+
+	RivenOceanTrackSlot: {
+		DisplayName: "{§Mods.Origins.Biomes.Riven_Hive_Ocean.DisplayName}"
+		Description: ""
+	}
+
+	RivenTrackSlot: {
+		DisplayName: "{§Riven_Hive}"
+		Description: ""
+	}
+
+	UndergroundRivenTrackSlot: {
+		DisplayName: Underground {§Riven_Hive}
+		Description: ""
+	}
+
+	RivenBossTrackSlot: {
+		DisplayName: "{§Mods.Origins.NPCs.World_Cracker_Head.DisplayName}"
+		Description: ""
+	}
+
+	AncientRivenTrackSlot: {
+		DisplayName: Ancient {§Riven_Hive} Music Box
+		Description: ""
+	}
+
+	BrinePoolTrackSlot: {
+		DisplayName: "{§Brine_Pool}"
+		Description: ""
+	}
+
+	AncientBrinePoolTrackSlot: {
+		DisplayName: Ancient {§Brine_Pool} Music Box
+		Description: ""
+	}
+
+	FiberglassTrackSlot: {
+		DisplayName: "{$Mods.Origins.Biomes.Fiberglass_Undergrowth.DisplayName}"
+		Description: ""
+	}
+
+	DuskTrackSlot: {
+		DisplayName: Dusk
+		Description: ""
+	}
+}
+
+Composers: {
+	Chee: chrersis
+	Goji: gojisturba
+}
 
 Configs: {
 	OriginsMusicConfig: {

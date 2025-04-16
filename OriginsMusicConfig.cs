@@ -1,17 +1,9 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Origins.Reflection;
 using OriginsMusic.Music;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.GameContent.UI.Elements;
-using Terraria.GameContent;
 using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
@@ -19,7 +11,7 @@ using Terraria.ModLoader.Config;
 using Terraria.ModLoader.Config.UI;
 using Terraria.UI;
 using Terraria.ModLoader.UI;
-using System.Collections;
+using Origins.Tiles.MusicBoxes;
 
 namespace OriginsMusic {
 	public class OriginsMusicConfig : ModConfig {
@@ -33,6 +25,7 @@ namespace OriginsMusic {
 			foreach (AMusicTrack item in trackChoices.Values) {
 				item.SetActive();
 			}
+			Music_Box.ReloadMusicAssociations();
 		}
 	}
 	[JsonConverter(typeof(JsonConverter))]
@@ -136,7 +129,7 @@ namespace OriginsMusic {
 					newPanel.OnUpdate += element => {
 						if (element is UIPanel panel) {
 							if (selectedFunction(item)) {
-								panel.BackgroundColor = Main.OurFavoriteColor;
+								panel.BackgroundColor = new(222, 200, 34);
 							} else {
 								panel.BackgroundColor = element.IsMouseHovering ? new Color(91, 120, 227) : UICommon.DefaultUIBlueMouseOver;
 							}
@@ -170,6 +163,7 @@ namespace OriginsMusic {
 					} else {
 						result.unloadedChoices.Add(slotName, trackName);
 					}
+					reader.Read();
 				}
 				return result;
 			}

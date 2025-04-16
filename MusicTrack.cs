@@ -13,10 +13,10 @@ namespace OriginsMusic {
 		public virtual string Name => GetType().Name;
 		public virtual LocalizedText DisplayName => Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.{Name}.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " "));
 		public virtual LocalizedText Subtitle => Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.{Name}.Subtitle", () => Mod.DisplayName);
-		public LocalizedText ComposerDisplayName => Language.GetOrRegister($"Mods.{Mod.Name}.Composers.{ComposerName}", () => ComposerName);
-		public virtual int SortingIndex => 0;
+		public LocalizedText ComposerDisplayName => Language.GetOrRegister($"Mods.{Mod.Name}.Composers.{Composer}", Composer.ToString);
+		public virtual int SortingIndex => (int)Composer;
 		public virtual string TrackLocation => GetType().GetDefaultTMLName();
-		public abstract string ComposerName { get; }
+		public abstract Composer Composer { get; }
 		public abstract TrackSlot TrackSlot { get; }
 		public abstract int TrackID { get; protected set; }
 		public Mod Mod { get; protected set; }
@@ -79,7 +79,8 @@ namespace OriginsMusic {
 	}
 	public abstract record class TrackSlot : ILoadable, IModType, IComparable<TrackSlot> {
 		public virtual string Name => GetType().Name;
-		public virtual LocalizedText DisplayName => Language.GetOrRegister($"Mods.OriginsMusic.Tracks.{Name}.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " "));
+		public virtual LocalizedText DisplayName => Language.GetOrRegister($"Mods.OriginsMusic.TrackSlots.{Name}.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " "));
+		public virtual LocalizedText Description => Language.GetOrRegister($"Mods.OriginsMusic.TrackSlots.{Name}.Description", () => "");
 		public virtual int SortingIndex => 0;
 		[NoJIT]
 		public abstract ref int TrackController { get; }
@@ -91,6 +92,8 @@ namespace OriginsMusic {
 				VerifyTrackControler();
 				Mod = mod;
 				ModTypeLookup<TrackSlot>.Register(this);
+				_ = DisplayName;
+				_ = Description;
 			} catch (Exception e) {
 				if (LogSlotLoadingError(this, e)) throw;
 			}
@@ -114,8 +117,8 @@ namespace OriginsMusic {
 	}
 	public abstract class TrackSet : ILoadable, IModType, IComparable<TrackSet> {
 		public virtual string Name => GetType().Name;
-		public virtual LocalizedText DisplayName => Language.GetOrRegister($"Mods.OriginsMusic.Tracks.{Name}.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " "));
-		public virtual LocalizedText Description => Language.GetOrRegister($"Mods.OriginsMusic.Tracks.{Name}.Description", () => "");
+		public virtual LocalizedText DisplayName => Language.GetOrRegister($"Mods.OriginsMusic.TrackSets.{Name}.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " "));
+		public virtual LocalizedText Description => Language.GetOrRegister($"Mods.OriginsMusic.TrackSets.{Name}.Description", () => "");
 		public virtual int SortingIndex => 0;
 		public abstract IEnumerable<AMusicTrack> GetMusicTracks();
 		public Mod Mod { get; private set; }
@@ -131,6 +134,8 @@ namespace OriginsMusic {
 		public void Load(Mod mod) {
 			Mod = mod;
 			OriginsMusic.trackSets.Add(this);
+			_ = DisplayName;
+			_ = Description;
 		}
 		public void Unload() {}
 		public int CompareTo(TrackSet other) => SortingIndex.CompareTo(other.SortingIndex);

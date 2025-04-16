@@ -20,7 +20,7 @@ namespace OriginsMusic {
 				tracksToLoad[i].LoadLate();
 			}
 			trackSets.Sort();
-			slotsToShow = tracksBySlot.Keys.Where(tracksBySlot.ContainsKey).Order().ToList();
+			slotsToShow = tracksBySlot.Where(kvp => kvp.Value.Count > 1).Select(kvp => kvp.Key).Order().ToList();
 			foreach (List<AMusicTrack> item in tracksBySlot.Values) {
 				item.Sort();
 				for (int i = 0; i < item.Count; i++) {
