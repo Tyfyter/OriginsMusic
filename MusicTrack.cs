@@ -25,10 +25,10 @@ namespace OriginsMusic {
 			ModTypeLookup<AMusicTrack>.Register(this);
 		}
 		public virtual void UpdatePlaying() { }
-		public void SetActive() {
+		public virtual void SetActive() {
 			TrackSlot.SetTrack(TrackID);
 		}
-		public bool IsActive => TrackSlot.IsTrackActive(TrackID);
+		public virtual bool IsActive => TrackSlot.IsTrackActive(TrackID);
 		public int CompareTo(AMusicTrack other) => SortingIndex.CompareTo(other.SortingIndex);
 	}
 	public abstract class MusicTrack<TTrackSlot> : AMusicTrack, ILoadable, INeedToLoadLate where TTrackSlot : TrackSlot {
