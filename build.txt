@@ -1,5 +1,5 @@
 displayName = Origins Music
-author = Tyfyter2002 and chrersis
+author = Moonlight Glint, chrersis, and gojisturba
 version = 0.2.1
 modReferences = Origins, PegasusLib, ProceduralMusicLib
 side = Client
