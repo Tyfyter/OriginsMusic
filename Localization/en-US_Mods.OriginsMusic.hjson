@@ -7,8 +7,6 @@ OptionDescription:
 	'''
 
 Tracks: {
-	TestMusicTrack.DisplayName: Test Music Track
-
 	Abstract: {
 		DisplayName: Abstract
 		Subtitle: Origins Music
@@ -123,6 +121,21 @@ Tracks: {
 		DisplayName: ARBITRATE
 		Subtitle: Origins Music
 	}
+
+	Mildewy_Situation: {
+		DisplayName: Mildewy Situation
+		Subtitle: Origins Music
+	}
+
+	Carrion_Awakened: {
+		DisplayName: Carrion Awakened
+		Subtitle: Origins Music
+	}
+
+	Carrion_Awakened_Finish: {
+		DisplayName: Ooh, shiny
+		Subtitle: Origins Music
+	}
 }
 
 TrackSets: {
@@ -205,6 +218,11 @@ TrackSlots: {
 
 	DuskTrackSlot: {
 		DisplayName: Dusk
+		Description: ""
+	}
+
+	BrineBossTrackSlot: {
+		DisplayName: Brine Boss Track Slot
 		Description: ""
 	}
 }

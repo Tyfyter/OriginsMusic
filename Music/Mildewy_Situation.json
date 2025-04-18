@@ -1,0 +1,40 @@
+{
+	"Chunks": {
+		"Start": {
+			"AudioPath": "OriginsMusic/Music/Unknown/Mildewy_Situation_Start"
+		},
+		"Loop": {
+			"AudioPath": "OriginsMusic/Music/Unknown/Mildewy_Situation"
+		}
+	},
+	"Segments": {
+		"Start": {
+			"Keyframes": [
+				{
+					"Type": "Audio",
+					"Chunk": "Start"
+				},
+				{
+					"Type": "Switch_Segment",
+					"Segments": [
+						"Loop"
+					]
+				}
+			]
+		},
+		"Loop": {
+			"Keyframes": [
+				{
+					"Type": "Audio",
+					"Chunk": "Loop"
+				},
+				{
+					"Type": "Switch_Segment",
+					"Segments": [
+						"Loop"
+					]
+				}
+			]
+		}
+	}
+}

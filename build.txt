@@ -1,6 +1,6 @@
 displayName = Origins Music
 author = Tyfyter2002 and chrersis
 version = 0.2.1
-modReferences = Origins, PegasusLib
+modReferences = Origins, PegasusLib, ProceduralMusicLib
 side = Client
 buildIgnore = *.csproj, *.xcf, *.user, obj\*, bin\*, .vs\*, Uncompressed\*, Sounds\Music\Legacy\*

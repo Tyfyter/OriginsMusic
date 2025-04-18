@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33801.447
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OriginsMusic", "OriginsMusic.csproj", "{19006ACD-445E-4374-B552-C3F98CEEC784}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Origins", "..\Origins\Origins.csproj", "{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{66C06920-A7F7-407C-AE71-F87F458C8076}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProceduralMusicLib", "..\ProceduralMusicLib\ProceduralMusicLib.csproj", "{879E978A-56A0-4FB6-002C-B2311566AB51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C362E4F-E5DD-465A-9EAB-F0A9B95DF7B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{879E978A-56A0-4FB6-002C-B2311566AB51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{879E978A-56A0-4FB6-002C-B2311566AB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{879E978A-56A0-4FB6-002C-B2311566AB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{879E978A-56A0-4FB6-002C-B2311566AB51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

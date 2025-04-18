@@ -34,6 +34,7 @@ namespace OriginsMusic {
 	public abstract class MusicTrack<TTrackSlot> : AMusicTrack, ILoadable, INeedToLoadLate where TTrackSlot : TrackSlot {
 		public override int TrackID { get; protected set; }
 		public override TrackSlot TrackSlot => ModContent.GetInstance<TTrackSlot>();
+		public virtual bool AutoRegisterMusicDisplay => true;
 		public void Load(Mod mod) {
 			Mod = mod;
 			OriginsMusic.tracksToLoad.Add((this, mod));
@@ -48,7 +49,7 @@ namespace OriginsMusic {
 				LoadTrack();
 				Register();
 				OriginsMusic.tracksBySlot.Add(trackSlot, this);
-				if (ModLoader.TryGetMod("MusicDisplay", out Mod musicDisplay)) {
+				if (AutoRegisterMusicDisplay && ModLoader.TryGetMod("MusicDisplay", out Mod musicDisplay)) {
 					musicDisplay.Call("AddMusic",
 						(short)TrackID,
 						DisplayName,

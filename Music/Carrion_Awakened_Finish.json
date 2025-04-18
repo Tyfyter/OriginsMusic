@@ -1,0 +1,31 @@
+{
+	"Chunks": {
+		"Start": {
+			"AudioPath": "OriginsMusic/Music/Unknown/Carrion_Awakened_Finish"
+		}
+	},
+	"Segments": {
+		"Start": {
+			"Keyframes": [
+				{
+					"Type": "Audio",
+					"Chunk": "Start"
+				}
+			]
+		},
+		"Loop": {
+			"Keyframes": [
+				{
+					"Type": "Audio",
+					"Chunk": "Start"
+				},
+				{
+					"Type": "Switch_Segment",
+					"Segments": [
+						"Loop"
+					]
+				}
+			]
+		}
+	}
+}

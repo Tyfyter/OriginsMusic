@@ -1,4 +1,8 @@
 ﻿using PegasusLib;
+using System.Text.RegularExpressions;
+using Terraria;
+using Terraria.Localization;
+using Terraria.ModLoader;
 using static OriginsMusic.Composer;
 using Slot = Origins.Origins.Music;
 
@@ -110,6 +114,55 @@ namespace OriginsMusic.Music {
 	}
 	public class Deep_Luminance : MusicTrack<BrinePoolTrackSlot> {
 		public override Composer Composer { get; } = Goji;
+	}
+	public record class BrineBossTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.LostDiver;
+		public override int SortingIndex => 10;
+	}
+	public class Chee_Brine_Boss : MusicTrack<BrineBossTrackSlot> {
+		public override Composer Composer { get; } = Chee;
+		public override bool AutoRegisterMusicDisplay => false;
+		int mildewCarrionTrack;
+		int crownJewelTrack;
+		public override void LoadTrack() {
+			Mod pml = ModLoader.GetMod("ProceduralMusicLib");
+			TrackID = (int)pml.Call("AddMusic", Mod, "Music/Mildewy_Situation");
+
+			MusicLoader.AddMusic(Mod, "Music/Unknown/Carrion_Awakened");
+			mildewCarrionTrack = MusicLoader.GetMusicSlot($"{Mod.Name}/Music/Unknown/Carrion_Awakened");
+
+			crownJewelTrack = (int)pml.Call("AddMusic", Mod, "Music/Carrion_Awakened_Finish");
+
+			if (ModLoader.TryGetMod("MusicDisplay", out Mod musicDisplay)) {
+				musicDisplay.Call("AddMusic",
+					(short)TrackID,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.Mildewy_Situation.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " ")).Value,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.Mildewy_Situation.Subtitle", () => Mod.DisplayName),
+					Subtitle
+				);
+				musicDisplay.Call("AddMusic",
+					(short)mildewCarrionTrack,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.Carrion_Awakened.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " ")).Value,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.Carrion_Awakened.Subtitle", () => Mod.DisplayName),
+					Subtitle
+				);
+				musicDisplay.Call("AddMusic",
+					(short)crownJewelTrack,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.Carrion_Awakened_Finish.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " ")).Value,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.Carrion_Awakened_Finish.Subtitle", () => Mod.DisplayName),
+					Subtitle
+				);
+			}
+		}
+		public override void UpdatePlaying() {
+			Main.musicNoCrossFade[TrackID] = true;
+			Main.musicNoCrossFade[crownJewelTrack] = true;
+		}
+		public override void SetActive() {
+			base.SetActive();
+			Slot.MildewCarrion = mildewCarrionTrack;
+			Slot.CrownJewel = crownJewelTrack;
+		}
 	}
 	public record class AncientBrinePoolTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.AncientBrinePool;
