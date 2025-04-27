@@ -9,132 +9,137 @@ OptionDescription:
 Tracks: {
 	Abstract: {
 		DisplayName: Abstract
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Stolen_Memories: {
 		DisplayName: Stolen Memories
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Ad_Laceratur: {
 		DisplayName: Ad Laceratur
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Alkahest: {
 		DisplayName: Alkahest
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. II
 	}
 
 	Below_The_Brine: {
 		DisplayName: Below The Brine
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Dancing_With_Ghosts: {
 		DisplayName: Dancing With Ghosts
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Deep_Luminance: {
 		DisplayName: Deep Luminance
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. II
 	}
 
 	Dread_Heart: {
 		DisplayName: Dread Heart
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. II
 	}
 
 	Festering_Hives: {
 		DisplayName: Festering Hives
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Festering_Hives_Ancient: {
 		DisplayName: Festering Hives Ancient
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Frayed_And_Stretched: {
 		DisplayName: Frayed And Stretched
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. II
 	}
 
 	Heart_Of_The_Beast: {
 		DisplayName: Heart Of The Beast
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Internal_Organism: {
 		DisplayName: Internal Organism
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. II
 	}
 
 	Only_the_Brave: {
-		DisplayName: Only_the Brave
-		Subtitle: Origins Music
+		DisplayName: Only The Brave
+		Subtitle: Origins Music Vol. I
 	}
 
 	Pereunt_Unum_Scindendum: {
 		DisplayName: Pereunt Unum Scindendum
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Shattered_Topography_Old: {
 		DisplayName: Shattered Topography Old
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Skin: {
 		DisplayName: Skin
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. II
 	}
 
 	Skulking: {
 		DisplayName: Skulking
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. II
 	}
 
 	The_Room_Before: {
 		DisplayName: The Room Before
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	This_Ocean_Of_Alkahest: {
 		DisplayName: This Ocean Of Alkahest
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Wasteland: {
 		DisplayName: Wasteland
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. II
 	}
 
 	ADJUDICATE: {
 		DisplayName: ADJUDICATE
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	ARBITRATE: {
 		DisplayName: ARBITRATE
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. II
 	}
 
 	Mildewy_Situation: {
 		DisplayName: Mildewy Situation
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Carrion_Awakened: {
 		DisplayName: Carrion Awakened
-		Subtitle: Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Carrion_Awakened_Finish: {
-		DisplayName: Ooh, shiny
-		Subtitle: Origins Music
+		DisplayName: Paste
+		Subtitle: Origins Music Vol. II
+	}
+
+	Chee_Brine_Boss: {
+		DisplayName: What?
+		Subtitle: Origins Music Vol. I?
 	}
 }
 

@@ -1,6 +1,6 @@
 displayName = Origins Music
 author = Moonlight Glint, chrersis, and gojisturba
-version = 0.2.1
+version = 0.5
 modReferences = Origins, PegasusLib, ProceduralMusicLib
 side = Client
 buildIgnore = *.csproj, *.xcf, *.user, obj\*, bin\*, .vs\*, Uncompressed\*, Sounds\Music\Legacy\*
