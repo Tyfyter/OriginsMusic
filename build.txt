@@ -1,4 +1,4 @@
-displayName = Origins Music
+displayName = Terraria Origins Music
 author = Moonlight Glint, chrersis, and gojisturba
 version = 0.5
 modReferences = Origins, PegasusLib, ProceduralMusicLib
