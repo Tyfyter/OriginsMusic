@@ -1,6 +1,9 @@
 ﻿using PegasusLib;
+using System;
 using System.Text.RegularExpressions;
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using static OriginsMusic.Composer;
@@ -172,10 +175,39 @@ namespace OriginsMusic.Music {
 		public override Composer Composer { get; } = Chee;
 	}
 	#endregion
+	public record class ShimmerBossTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.ShimmerConstruct;
+		public override int SortingIndex => 12;
+	}
+	public class Shimmer_Construct : MusicTrack<ShimmerBossTrackSlot> {
+		public override Composer Composer { get; } = Chee;
+		public override bool AutoRegisterMusicDisplay => false;
+		int lowHealthTrack;
+		public override void LoadTrack() {
+			//MusicLoader.AddMusic(Mod, "Music/Unknown/Carrion_Awakened");
+			TrackID = MusicID.OtherworldlyBoss1;
+
+			//MusicLoader.AddMusic(Mod, "Music/Unknown/Carrion_Awakened");
+			lowHealthTrack = MusicID.OtherworldlyBoss2;
+
+			if (ModLoader.TryGetMod("MusicDisplay", out Mod musicDisplay)) {
+
+			}
+		}
+		public override void UpdatePlaying() {
+			float life = 0;
+			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct>());
+			if (npcIndex != -1) life = Main.npc[npcIndex].GetLifePercent();
+			Main.musicFade[TrackID] = MathF.Pow(life, 0.5f);
+			Main.musicFade[lowHealthTrack] = MathF.Pow(1 - life, 0.5f);
+			if (NPC.MoonLordCountdown > 0) return;
+			Main.audioSystem.UpdateCommonTrack(Main.instance.IsActive, lowHealthTrack, Main.musicFade[lowHealthTrack] * Main.musicVolume, ref Main.musicFade[lowHealthTrack]);
+		}
+	}
 	#region Dusk
 	public record class DuskTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.Dusk;
-		public override int SortingIndex => 12;
+		public override int SortingIndex => 13;
 	}
 	public class Dancing_With_Ghosts : MusicTrack<DuskTrackSlot> {
 		public override Composer Composer { get; } = Chee;

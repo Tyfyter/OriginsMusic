@@ -141,6 +141,11 @@ Tracks: {
 		DisplayName: What?
 		Subtitle: Origins Music Vol. I?
 	}
+
+	Shimmer_Construct: {
+		DisplayName: Shimmer Construct
+		Subtitle: Terraria Origins Music
+	}
 }
 
 TrackSets: {
@@ -228,6 +233,11 @@ TrackSlots: {
 
 	BrineBossTrackSlot: {
 		DisplayName: Brine Boss Track Slot
+		Description: ""
+	}
+
+	ShimmerBossTrackSlot: {
+		DisplayName: Shimmer Boss Track Slot
 		Description: ""
 	}
 }
