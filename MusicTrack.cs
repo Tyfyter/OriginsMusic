@@ -17,6 +17,7 @@ namespace OriginsMusic {
 		public virtual int SortingIndex => (int)Composer;
 		public virtual string TrackLocation => GetType().GetDefaultTMLName();
 		public abstract Composer Composer { get; }
+		[NoJIT]
 		public abstract TrackSlot TrackSlot { get; }
 		public abstract int TrackID { get; protected set; }
 		public Mod Mod { get; protected set; }
@@ -24,6 +25,7 @@ namespace OriginsMusic {
 		protected void Register() {
 			ModTypeLookup<AMusicTrack>.Register(this);
 		}
+		[NoJIT]
 		public virtual void UpdatePlaying() { }
 		public virtual void SetActive() {
 			TrackSlot.SetTrack(TrackID);
@@ -33,7 +35,7 @@ namespace OriginsMusic {
 	}
 	public abstract class MusicTrack<TTrackSlot> : AMusicTrack, ILoadable, INeedToLoadLate where TTrackSlot : TrackSlot {
 		public override int TrackID { get; protected set; }
-		public override TrackSlot TrackSlot => ModContent.GetInstance<TTrackSlot>();
+		public override TrackSlot TrackSlot => TrackSlot.GetInstance<TTrackSlot>();
 		public virtual bool AutoRegisterMusicDisplay => true;
 		public void Load(Mod mod) {
 			Mod = mod;
@@ -69,7 +71,7 @@ namespace OriginsMusic {
 		public void Unload() { }
 		public static bool LogTrackLoadingError(MusicTrack<TTrackSlot> track, Exception exception) {
 #if DEBUG
-			return true;
+			return exception is not MissingFieldException;
 #else
 			LocalizedText message = Language.GetOrRegister("Mods.OriginsMusic.MusicLoadingException").WithFormatArgs(track.DisplayName, exception);
 			ModContent.GetInstance<OriginsMusic>().Logger.Warn(message.Value);
@@ -87,6 +89,12 @@ namespace OriginsMusic {
 		protected abstract ref int TrackController { get; }
 		public Mod Mod { get; private set; }
 		public string FullName => $"{Mod.Name}/{Name}";
+		bool valid = false;
+		public static T GetInstance<T>() where T : TrackSlot {
+			T instance = ModContent.GetInstance<T>();
+			if (instance.valid) return instance;
+			return null;
+		}
 		public void Load(Mod mod) {
 			try {
 				VerifyTrackControler();
@@ -94,6 +102,7 @@ namespace OriginsMusic {
 				ModTypeLookup<TrackSlot>.Register(this);
 				_ = DisplayName;
 				_ = Description;
+				valid = true;
 			} catch (Exception e) {
 				if (LogSlotLoadingError(this, e)) throw;
 			}
@@ -108,7 +117,7 @@ namespace OriginsMusic {
 		}
 		public static bool LogSlotLoadingError(TrackSlot slot, Exception exception) {
 #if DEBUG
-			return true;
+			return exception is not MissingFieldException;
 #else
 			LocalizedText message = Language.GetOrRegister("Mods.OriginsMusic.SlotLoadingException").WithFormatArgs(slot.DisplayName, exception);
 			ModContent.GetInstance<OriginsMusic>().Logger.Warn(message.Value);
