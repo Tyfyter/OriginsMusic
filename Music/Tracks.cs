@@ -1,4 +1,5 @@
-﻿using PegasusLib;
+﻿using MonoMod.Cil;
+using PegasusLib;
 using System;
 using System.Text.RegularExpressions;
 using Terraria;
@@ -179,19 +180,50 @@ namespace OriginsMusic.Music {
 		protected override ref int TrackController => ref Slot.ShimmerConstruct;
 		public override int SortingIndex => 12;
 	}
-	public class Shimmer_Construct : MusicTrack<ShimmerBossTrackSlot> {
+	public class A_Mothers_Soft_Side : MusicTrack<ShimmerBossTrackSlot> {
 		public override Composer Composer { get; } = Chee;
 		public override bool AutoRegisterMusicDisplay => false;
 		int lowHealthTrack;
 		public override void LoadTrack() {
-			//MusicLoader.AddMusic(Mod, "Music/Unknown/Carrion_Awakened");
-			TrackID = MusicID.OtherworldlyBoss1;
+			MusicLoader.AddMusic(Mod, "Music/A_Mothers_Soft_Side");
+			TrackID = MusicLoader.GetMusicSlot($"{Mod.Name}/Music/A_Mothers_Soft_Side");
 
-			//MusicLoader.AddMusic(Mod, "Music/Unknown/Carrion_Awakened");
-			lowHealthTrack = MusicID.OtherworldlyBoss2;
+			MusicLoader.AddMusic(Mod, "Music/Mythopoeic_Lattice");
+			lowHealthTrack = MusicLoader.GetMusicSlot($"{Mod.Name}/Music/Mythopoeic_Lattice");
 
 			if (ModLoader.TryGetMod("MusicDisplay", out Mod musicDisplay)) {
+				musicDisplay.Call("AddMusic",
+					(short)TrackID,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.A_Mothers_Soft_Side.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " ")).Value,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.A_Mothers_Soft_Side.Subtitle", () => Mod.DisplayName),
+					Subtitle
+				);
 
+				musicDisplay.Call("AddMusic",
+					(short)lowHealthTrack,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.Mythopoeic_Lattice.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " ")).Value,
+					Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.Mythopoeic_Lattice.Subtitle", () => Mod.DisplayName),
+					Subtitle
+				);
+			}
+			try {
+				IL_Player.ApplyEquipFunctional += (il) => {
+					ILCursor c = new(il);
+					c.GotoNext(MoveType.After,
+						i => i.MatchLdfld<Item>(nameof(Item.type)),
+						i => i.MatchLdcI4(ItemID.MusicBox)
+					);
+					c.GotoNext(MoveType.After,
+						i => i.MatchLdsfld<MusicLoader>("musicToItem"),
+						i => i.MatchLdsfld<Main>(nameof(Main.curMusic))
+					);
+					c.EmitDelegate((int curMusic) => {
+						if (Main.musicFade[lowHealthTrack] > Main.musicFade[curMusic]) return lowHealthTrack;
+						return curMusic;
+					});
+				};
+			} catch (Exception ex) {
+				if (Origins.Origins.LogLoadingILError("Shimmer_Construct_Theme.LowHealthMusicBox", ex)) throw;
 			}
 		}
 		public override void UpdatePlaying() {
