@@ -1,4 +1,5 @@
 ﻿using MonoMod.Cil;
+using NVorbis;
 using PegasusLib;
 using System;
 using System.Text.RegularExpressions;
@@ -225,13 +226,17 @@ namespace OriginsMusic.Music {
 			} catch (Exception ex) {
 				if (Origins.Origins.LogLoadingILError("Shimmer_Construct_Theme.LowHealthMusicBox", ex)) throw;
 			}
+			On_LegacyAudioSystem.UpdateCommonTrackTowardStopping += (On_LegacyAudioSystem.orig_UpdateCommonTrackTowardStopping orig, LegacyAudioSystem self, int i, float totalVolume, ref float tempFade, bool isMainTrackAudible) => {
+				if (Main.curMusic == TrackID && i == lowHealthTrack) return;
+				orig(self, i, totalVolume, ref tempFade, isMainTrackAudible);
+			};
 		}
 		public override void UpdatePlaying() {
 			float life = 0;
 			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct>());
 			if (npcIndex != -1) life = Main.npc[npcIndex].GetLifePercent();
 			Main.musicFade[TrackID] = MathF.Pow(life, 0.5f);
-			Main.musicFade[lowHealthTrack] = MathF.Pow(1 - life, 0.5f);
+			Main.musicFade[lowHealthTrack] = MathF.Pow(Math.Max(1 - life, float.Epsilon), 0.5f);
 			if (NPC.MoonLordCountdown > 0) return;
 			Main.audioSystem.UpdateCommonTrack(Main.instance.IsActive, lowHealthTrack, Main.musicFade[lowHealthTrack] * Main.musicVolume, ref Main.musicFade[lowHealthTrack]);
 		}
