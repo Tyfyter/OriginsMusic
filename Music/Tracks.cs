@@ -237,6 +237,12 @@ namespace OriginsMusic.Music {
 			if (npcIndex != -1) life = Main.npc[npcIndex].GetLifePercent();
 			Main.musicFade[TrackID] = MathF.Pow(life, 0.5f);
 			Main.musicFade[lowHealthTrack] = MathF.Pow(Math.Max(1 - life, float.Epsilon), 0.5f);
+			SetPitch(lowHealthTrack, 1 - life);
+			static void SetPitch(int track, float pitch) {
+				if (Main.audioSystem is LegacyAudioSystem audioSystem && audioSystem.AudioTracks.IndexInRange(track) && audioSystem.AudioTracks[track] is ASoundEffectBasedAudioTrack actualTrack) {
+					actualTrack.SetVariable("Pitch", pitch);
+				}
+			}
 			if (NPC.MoonLordCountdown > 0) return;
 			Main.audioSystem.UpdateCommonTrack(Main.instance.IsActive, lowHealthTrack, Main.musicFade[lowHealthTrack] * Main.musicVolume, ref Main.musicFade[lowHealthTrack]);
 		}
