@@ -1,6 +1,6 @@
 displayName = Terraria Origins Music
 author = Moonlight Glint, chrersis, and gojisturba
-version = 0.5
+version = 0.5.3
 modReferences = Origins, PegasusLib, ProceduralMusicLib
 side = Client
 buildIgnore = *.csproj, *.xcf, *.user, obj\*, bin\*, .vs\*, Uncompressed\*, Sounds\Music\Legacy\*
