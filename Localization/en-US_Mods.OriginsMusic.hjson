@@ -78,7 +78,7 @@ Tracks: {
 	}
 
 	Pereunt_Unum_Scindendum: {
-		DisplayName: Pereunt Unum Scindendum
+		DisplayName: Scinditur Pereunt
 		Subtitle: Origins Music Vol. I
 	}
 
@@ -154,6 +154,11 @@ Tracks: {
 
 	Mythopoeic_Lattice: {
 		DisplayName: Mythopoeic_Lattice
+		Subtitle: Terraria Origins Music
+	}
+
+	Scinditur_Pereunt: {
+		DisplayName: Scinditur Pereunt
 		Subtitle: Terraria Origins Music
 	}
 }

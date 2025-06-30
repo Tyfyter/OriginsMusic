@@ -56,7 +56,7 @@ namespace OriginsMusic.Music {
 		protected override ref int TrackController => ref Slot.Riven;
 		public override int SortingIndex => 4;
 	}
-	public class Pereunt_Unum_Scindendum : MusicTrack<RivenTrackSlot> {
+	public class Scinditur_Pereunt : MusicTrack<RivenTrackSlot> {
 		public override Composer Composer { get; } = Chee;
 	}
 	public class Skin : MusicTrack<RivenTrackSlot> {
