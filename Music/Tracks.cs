@@ -234,10 +234,12 @@ namespace OriginsMusic.Music {
 		public override void UpdatePlaying() {
 			float life = 0;
 			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct>());
-			if (npcIndex != -1) life = Main.npc[npcIndex].GetLifePercent();
+			if (npcIndex != -1) {
+				life = Main.npc[npcIndex].GetLifePercent();
+				if (Main.npc[npcIndex].ModNPC is Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct sc && sc.IsInPhase3) SetPitch(lowHealthTrack, 1 - life);
+			}
 			Main.musicFade[TrackID] = MathF.Pow(life, 0.5f);
 			Main.musicFade[lowHealthTrack] = MathF.Pow(Math.Max(1 - life, float.Epsilon), 0.5f);
-			SetPitch(lowHealthTrack, 1 - life);
 			static void SetPitch(int track, float pitch) {
 				if (Main.audioSystem is LegacyAudioSystem audioSystem && audioSystem.AudioTracks.IndexInRange(track) && audioSystem.AudioTracks[track] is ASoundEffectBasedAudioTrack actualTrack) {
 					actualTrack.SetVariable("Pitch", pitch);
