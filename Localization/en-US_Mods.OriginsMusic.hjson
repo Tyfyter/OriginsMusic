@@ -161,6 +161,11 @@ Tracks: {
 		DisplayName: Scinditur Pereunt
 		Subtitle: Terraria Origins Music
 	}
+
+	Pocket_Dimension: {
+		DisplayName: Pocket Dimension
+		Subtitle: Terraria Origins Music
+	}
 }
 
 TrackSets: {
@@ -253,6 +258,11 @@ TrackSlots: {
 
 	ShimmerBossTrackSlot: {
 		DisplayName: Shimmer Boss Track Slot
+		Description: ""
+	}
+
+	ShimmerPhase3BossTrackSlot: {
+		DisplayName: Shimmer Phase3 Boss Track Slot
 		Description: ""
 	}
 }

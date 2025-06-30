@@ -1,6 +1,7 @@
 ﻿using PegasusLib;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -9,7 +10,7 @@ namespace OriginsMusic {
 	public interface INeedToLoadLate {
 		void LoadLate(Mod mod);
 	}
-	public abstract class AMusicTrack : IModType, IComparable<AMusicTrack> {
+	public abstract class AMusicTrack : IModType, IComparable<AMusicTrack>, ILocalizedModType {
 		public virtual string Name => GetType().Name;
 		public virtual LocalizedText DisplayName => Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.{Name}.DisplayName", () => Regex.Replace(Name, "([A-Z])", " $1").Trim().Replace("_ ", " "));
 		public virtual LocalizedText Subtitle => Language.GetOrRegister($"Mods.{Mod.Name}.Tracks.{Name}.Subtitle", () => Mod.DisplayName);
@@ -32,6 +33,11 @@ namespace OriginsMusic {
 		}
 		public virtual bool IsActive => TrackSlot.IsTrackActive(TrackID);
 		public int CompareTo(AMusicTrack other) => SortingIndex.CompareTo(other.SortingIndex);
+		public int AddMusic(string path) {
+			MusicLoader.AddMusic(Mod, path);
+			return MusicLoader.GetMusicSlot($"{Mod.Name}/{path}");
+		}
+		public string LocalizationCategory => "Tracks";
 	}
 	public abstract class MusicTrack<TTrackSlot> : AMusicTrack, ILoadable, INeedToLoadLate where TTrackSlot : TrackSlot {
 		public override int TrackID { get; protected set; }

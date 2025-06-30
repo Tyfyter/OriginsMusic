@@ -1,5 +1,6 @@
 ﻿using MonoMod.Cil;
 using NVorbis;
+using Origins.NPCs.MiscB.Shimmer_Construct;
 using PegasusLib;
 using System;
 using System.Text.RegularExpressions;
@@ -133,8 +134,7 @@ namespace OriginsMusic.Music {
 			Mod pml = ModLoader.GetMod("ProceduralMusicLib");
 			TrackID = (int)pml.Call("AddMusic", Mod, "Music/Mildewy_Situation");
 
-			MusicLoader.AddMusic(Mod, "Music/Unknown/Carrion_Awakened");
-			mildewCarrionTrack = MusicLoader.GetMusicSlot($"{Mod.Name}/Music/Unknown/Carrion_Awakened");
+			mildewCarrionTrack = AddMusic("Music/Unknown/Carrion_Awakened");
 
 			crownJewelTrack = (int)pml.Call("AddMusic", Mod, "Music/Carrion_Awakened_Finish");
 
@@ -186,11 +186,9 @@ namespace OriginsMusic.Music {
 		public override bool AutoRegisterMusicDisplay => false;
 		int lowHealthTrack;
 		public override void LoadTrack() {
-			MusicLoader.AddMusic(Mod, "Music/A_Mothers_Soft_Side");
-			TrackID = MusicLoader.GetMusicSlot($"{Mod.Name}/Music/A_Mothers_Soft_Side");
+			TrackID = AddMusic("Music/A_Mothers_Soft_Side");
 
-			MusicLoader.AddMusic(Mod, "Music/Mythopoeic_Lattice");
-			lowHealthTrack = MusicLoader.GetMusicSlot($"{Mod.Name}/Music/Mythopoeic_Lattice");
+			lowHealthTrack = AddMusic("Music/Mythopoeic_Lattice");
 
 			if (ModLoader.TryGetMod("MusicDisplay", out Mod musicDisplay)) {
 				musicDisplay.Call("AddMusic",
@@ -234,19 +232,44 @@ namespace OriginsMusic.Music {
 		public override void UpdatePlaying() {
 			float life = 0;
 			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct>());
+			float volumeMult = 1f;
 			if (npcIndex != -1) {
-				life = Main.npc[npcIndex].GetLifePercent();
-				if (Main.npc[npcIndex].ModNPC is Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct sc && sc.IsInPhase3) SetPitch(lowHealthTrack, 1 - life);
+				NPC npc = Main.npc[npcIndex];
+				life = npc.GetLifePercent();
+				if (npc.ModNPC is Shimmer_Construct sc) {
+					volumeMult = Utils.Remap(
+						sc.deathAnimationTime, 
+						Shimmer_Construct.shattertime, Shimmer_Construct.shattertime + 60 * 5,
+						1, 0
+					);
+				}
 			}
-			Main.musicFade[TrackID] = MathF.Pow(life, 0.5f);
-			Main.musicFade[lowHealthTrack] = MathF.Pow(Math.Max(1 - life, float.Epsilon), 0.5f);
+			Main.musicFade[TrackID] = MathF.Pow(life, 0.5f) * volumeMult;
+			Main.musicFade[lowHealthTrack] = MathF.Pow(Math.Max(1 - life, float.Epsilon), 0.5f) * volumeMult;
+			if (NPC.MoonLordCountdown > 0) return;
+			Main.audioSystem.UpdateCommonTrack(Main.instance.IsActive, lowHealthTrack, Main.musicFade[lowHealthTrack] * Main.musicVolume, ref Main.musicFade[lowHealthTrack]);
+		}
+	}
+	public record class ShimmerPhase3BossTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.ShimmerConstructPhase3;
+		public override int SortingIndex => 13;
+	}
+	public class Pocket_Dimension : MusicTrack<ShimmerPhase3BossTrackSlot> {
+		public override Composer Composer { get; } = Chee;
+		public override void UpdatePlaying() {
+			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct>());
+			if (npcIndex != -1) {
+				float life = Main.npc[npcIndex].GetLifePercent();
+				if (Main.npc[npcIndex].ModNPC is Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct sc && sc.IsInPhase3) {
+					float pitchMod = float.Round((1 - life) * 12) / 12;
+					SetPitch(TrackID, pitchMod);
+				}
+			}
 			static void SetPitch(int track, float pitch) {
 				if (Main.audioSystem is LegacyAudioSystem audioSystem && audioSystem.AudioTracks.IndexInRange(track) && audioSystem.AudioTracks[track] is ASoundEffectBasedAudioTrack actualTrack) {
 					actualTrack.SetVariable("Pitch", pitch);
 				}
 			}
-			if (NPC.MoonLordCountdown > 0) return;
-			Main.audioSystem.UpdateCommonTrack(Main.instance.IsActive, lowHealthTrack, Main.musicFade[lowHealthTrack] * Main.musicVolume, ref Main.musicFade[lowHealthTrack]);
 		}
 	}
 	#region Dusk
