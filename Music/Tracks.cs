@@ -177,6 +177,7 @@ namespace OriginsMusic.Music {
 		public override Composer Composer { get; } = Chee;
 	}
 	#endregion
+	#region Shimmer Construct
 	public record class ShimmerBossTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.ShimmerConstruct;
 		public override int SortingIndex => 12;
@@ -272,10 +273,18 @@ namespace OriginsMusic.Music {
 			}
 		}
 	}
+	public record class TheDiveTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.TheDive;
+		public override int SortingIndex => 14;
+	}
+	public class The_Dive : MusicTrack<TheDiveTrackSlot> {
+		public override Composer Composer { get; } = Chee;
+	}
+	#endregion Shimmer Construct
 	#region Dusk
 	public record class DuskTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.Dusk;
-		public override int SortingIndex => 13;
+		public override int SortingIndex => 15;
 	}
 	public class Dancing_With_Ghosts : MusicTrack<DuskTrackSlot> {
 		public override Composer Composer { get; } = Chee;
