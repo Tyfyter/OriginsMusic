@@ -166,6 +166,11 @@ Tracks: {
 		DisplayName: Pocket Dimension
 		Subtitle: Terraria Origins Music
 	}
+
+	The_Dive: {
+		Subtitle: Terraria Origins Music
+		DisplayName: The Dive
+	}
 }
 
 TrackSets: {
@@ -264,6 +269,11 @@ TrackSlots: {
 	ShimmerPhase3BossTrackSlot: {
 		DisplayName: Shimmer Phase3 Boss Track Slot
 		Description: ""
+	}
+
+	TheDiveTrackSlot: {
+		Description: ""
+		DisplayName: The Dive Track Slot
 	}
 }
 
