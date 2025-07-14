@@ -245,6 +245,8 @@ namespace OriginsMusic.Music {
 					);
 				}
 			}
+			if (life > 0.5f) life = 1;
+			else life = Utils.Remap(life, 0.5f, 0f, 1 - 0.15f, 0);
 			Main.musicFade[TrackID] = MathF.Pow(life, 0.5f) * volumeMult;
 			Main.musicFade[lowHealthTrack] = MathF.Pow(Math.Max(1 - life, float.Epsilon), 0.5f) * volumeMult;
 			if (NPC.MoonLordCountdown > 0) return;
