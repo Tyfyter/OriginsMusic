@@ -1,0 +1,59 @@
+{
+	"Chunks": {
+		"Start": {
+			"AudioPath": "OriginsMusic/Music/Pocket_Dimension",
+			"End": "392240s"
+		},
+		"Loop": {
+			"AudioPath": "OriginsMusic/Music/Pocket_Dimension",
+			"Start": "392240s",
+			"End": "2636612s"
+		},
+		"End": {
+			"AudioPath": "OriginsMusic/Music/Pocket_Dimension",
+			"Start": "2636612s"
+		},
+		"Fade": {
+			"AudioPath": "OriginsMusic/Music/Pocket_Dimension_Fade"
+		}
+	},
+	"Segments": {
+		"Start": {
+			"Keyframes": [
+				{
+					"Type": "Audio",
+					"Chunk": "Start"
+				},
+				{
+					"Type": "Switch_Segment",
+					"Segments": [
+						"Loop"
+					]
+				}
+			]
+		},
+		"Loop": {
+			"Keyframes": [
+				{
+					"Type": "Audio",
+					"Chunk": "Loop"
+				},
+				{
+					"Type": "Switch_Segment",
+					"Segments": [
+						"Loop",
+						"Fade"
+					]
+				}
+			]
+		},
+		"Fade": {
+			"Keyframes": [
+				{
+					"Type": "Audio",
+					"Chunk": "Fade"
+				}
+			]
+		}
+	}
+}

@@ -259,18 +259,22 @@ namespace OriginsMusic.Music {
 	}
 	public class Pocket_Dimension : MusicTrack<ShimmerPhase3BossTrackSlot> {
 		public override Composer Composer { get; } = Chee;
+		public override void LoadTrack() {
+			Mod pml = ModLoader.GetMod("ProceduralMusicLib");
+			TrackID = (int)pml.Call("AddMusic", Mod, "Music/Pocket_Dimension");
+		}
 		public override void UpdatePlaying() {
-			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct>());
+			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Shimmer_Construct>());
 			if (npcIndex != -1) {
 				float life = Main.npc[npcIndex].GetLifePercent();
-				if (Main.npc[npcIndex].ModNPC is Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct sc && sc.IsInPhase3) {
+				if (Main.npc[npcIndex].ModNPC is Shimmer_Construct sc && sc.IsInPhase3) {
 					float pitchMod = float.Round((1 - life) * 12) / 12;
 					SetPitch(TrackID, pitchMod);
 				}
 			}
 			static void SetPitch(int track, float pitch) {
 				if (Main.audioSystem is LegacyAudioSystem audioSystem && audioSystem.AudioTracks.IndexInRange(track) && audioSystem.AudioTracks[track] is ASoundEffectBasedAudioTrack actualTrack) {
-					actualTrack.SetVariable("Pitch", pitch);
+					//actualTrack.SetVariable("Pitch", pitch);
 				}
 			}
 		}
