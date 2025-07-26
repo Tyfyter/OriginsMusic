@@ -14,6 +14,7 @@ namespace OriginsMusic {
 		public static List<TrackSlot> slotsToShow = [];
 		public OriginsMusic() {
 			MusicAutoloadingEnabled = false;
+			//MusicSkipsVolumeRemap = true;
 		}
 		public override void Load() {
 			for (int i = 0; i < tracksToLoad.Count; i++) {
