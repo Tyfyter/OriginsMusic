@@ -274,7 +274,7 @@ namespace OriginsMusic.Music {
 			}
 			static void SetPitch(int track, float pitch) {
 				if (Main.audioSystem is LegacyAudioSystem audioSystem && audioSystem.AudioTracks.IndexInRange(track) && audioSystem.AudioTracks[track] is ASoundEffectBasedAudioTrack actualTrack) {
-					//actualTrack.SetVariable("Pitch", pitch);
+					actualTrack.SetVariable("Pitch", pitch);
 				}
 			}
 		}
