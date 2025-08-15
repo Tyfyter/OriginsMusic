@@ -171,6 +171,11 @@ Tracks: {
 		Subtitle: Terraria Origins Music
 		DisplayName: The Dive
 	}
+
+	Defiled_Otherworldly: {
+		DisplayName: "{§Defiled} Otherworldly"
+		Subtitle: Terraria Origins Music
+	}
 }
 
 TrackSets: {
@@ -274,6 +279,11 @@ TrackSlots: {
 	TheDiveTrackSlot: {
 		Description: ""
 		DisplayName: The Dive Track Slot
+	}
+
+	OtherworldlyDefiledTrackSlot: {
+		DisplayName: Otherworldly {§Defiled} Track Slot
+		Description: ""
 	}
 }
 
