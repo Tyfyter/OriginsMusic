@@ -37,6 +37,7 @@ namespace OriginsMusic {
 			MusicLoader.AddMusic(Mod, path);
 			return MusicLoader.GetMusicSlot($"{Mod.Name}/{path}");
 		}
+		public virtual void PostSetupContent() { }
 		public string LocalizationCategory => "Tracks";
 	}
 	public abstract class MusicTrack<TTrackSlot> : AMusicTrack, ILoadable, INeedToLoadLate where TTrackSlot : TrackSlot {

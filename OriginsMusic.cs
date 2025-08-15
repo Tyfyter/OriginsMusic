@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace OriginsMusic {
@@ -29,6 +30,11 @@ namespace OriginsMusic {
 				}
 			}
 			AddConfig(nameof(OriginsMusicConfig), new OriginsMusicConfig());
+		}
+		public override void PostSetupContent() {
+			foreach (AMusicTrack track in tracksBySlot.Values.SelectMany(x => x)) {
+				track.PostSetupContent();
+			}
 		}
 	}
 	public class TrackUpdater : ModSystem {

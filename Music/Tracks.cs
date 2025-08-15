@@ -272,6 +272,9 @@ namespace OriginsMusic.Music {
 			Mod pml = ModLoader.GetMod("ProceduralMusicLib");
 			TrackID = (int)pml.Call("AddMusic", Mod, "Music/Pocket_Dimension");
 		}
+		public override void PostSetupContent() {
+			MusicID.Sets.SkipsVolumeRemap[TrackID] = true;
+		}
 		public override void UpdatePlaying() {
 			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Shimmer_Construct>());
 			if (npcIndex != -1) {
