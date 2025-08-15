@@ -50,10 +50,19 @@ namespace OriginsMusic.Music {
 	}
 	public class Shattered_Topography_Old : MusicTrack<AncientDefiledTrackSlot> {
 		public override Composer Composer { get; } = Chee;
-	}
-	#endregion
-	#region Riven Hive
-	public record class RivenTrackSlot : TrackSlot {
+    }
+    public record class OtherworldlyDefiledTrackSlot : TrackSlot
+    {
+        protected override ref int TrackController => ref Slot.OtherworldlyDefiled;
+        public override int SortingIndex => 16;
+    }
+    public class Defiled_Otherworldly : MusicTrack<OtherworldlyDefiledTrackSlot>
+    {
+        public override Composer Composer { get; } = Chee;
+    }
+    #endregion
+    #region Riven Hive
+    public record class RivenTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.Riven;
 		public override int SortingIndex => 4;
 	}
