@@ -240,6 +240,7 @@ namespace OriginsMusic.Music {
 			};
 		}
 		public override void UpdatePlaying() {
+			if (Main.curMusic != TrackID) return;
 			float life = 0;
 			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct>());
 			float volumeMult = 1f;
