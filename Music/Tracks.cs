@@ -109,9 +109,36 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => RivenTrackSlot.index + 4;
 	}
 	#endregion
+	#region Ashen
+	public record class AshenFactoryTrackSlot : TrackSlot {
+		public const int index = RivenTrackSlot.index + 5;
+		protected override ref int TrackController => ref Slot.AshenFactory;
+		public override int SortingIndex => index;
+	}
+	public record class AshenMinesTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.AshenMines;
+		public override int SortingIndex => AshenFactoryTrackSlot.index + 1;
+	}
+	public record class AshenScrapyardTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.AshenScrapyard;
+		public override int SortingIndex => AshenFactoryTrackSlot.index + 2;
+	}
+	public record class SmogStormTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.SmogStorm;
+		public override int SortingIndex => AshenFactoryTrackSlot.index + 3;
+	}
+	public record class AshenBossTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.AshenBoss;
+		public override int SortingIndex => AshenFactoryTrackSlot.index + 4;
+	}
+	public record class AncientAshenTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.AncientAshen;
+		public override int SortingIndex => AshenFactoryTrackSlot.index + 5;
+	}
+	#endregion
 	#region Fiberglass
 	public record class FiberglassTrackSlot : TrackSlot {
-		public const int index = RivenTrackSlot.index + 5;
+		public const int index = AshenFactoryTrackSlot.index + 6;
 		protected override ref int TrackController => ref Slot.Fiberglass;
 		public override int SortingIndex => index;
 	}
