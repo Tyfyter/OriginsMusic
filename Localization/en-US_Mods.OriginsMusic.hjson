@@ -176,6 +176,11 @@ Tracks: {
 		DisplayName: "{§Defiled} Otherworldly"
 		Subtitle: Terraria Origins Music
 	}
+
+	Forgotten_Carbon: {
+		DisplayName: Forgotten Carbon
+		Subtitle: Terraria Origins Music
+	}
 }
 
 TrackSets: {
@@ -262,27 +267,57 @@ TrackSlots: {
 	}
 
 	BrineBossTrackSlot: {
-		DisplayName: Brine Boss Track Slot
+		DisplayName: Brine Boss
 		Description: ""
 	}
 
 	ShimmerBossTrackSlot: {
-		DisplayName: Shimmer Boss Track Slot
+		DisplayName: Shimmer Construct
 		Description: ""
 	}
 
 	ShimmerPhase3BossTrackSlot: {
-		DisplayName: Shimmer Phase3 Boss Track Slot
+		DisplayName: Pocket Dimension
 		Description: ""
 	}
 
 	TheDiveTrackSlot: {
 		Description: ""
-		DisplayName: The Dive Track Slot
+		DisplayName: The Dive
 	}
 
 	OtherworldlyDefiledTrackSlot: {
-		DisplayName: Otherworldly {§Defiled} Track Slot
+		DisplayName: Otherworldly {§Defiled}
+		Description: ""
+	}
+
+	AncientAshenTrackSlot: {
+		DisplayName: Ancient Ashen
+		Description: ""
+	}
+
+	AshenBossTrackSlot: {
+		DisplayName: Ashen Boss
+		Description: ""
+	}
+
+	AshenFactoryTrackSlot: {
+		DisplayName: Ashen Factory
+		Description: ""
+	}
+
+	AshenMinesTrackSlot: {
+		DisplayName: Ashen Mines
+		Description: ""
+	}
+
+	AshenScrapyardTrackSlot: {
+		DisplayName: Ashen Scrapyard
+		Description: ""
+	}
+
+	SmogStormTrackSlot: {
+		DisplayName: Smog Storm
 		Description: ""
 	}
 }

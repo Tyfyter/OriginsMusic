@@ -127,6 +127,9 @@ namespace OriginsMusic.Music {
 		protected override ref int TrackController => ref Slot.SmogStorm;
 		public override int SortingIndex => AshenFactoryTrackSlot.index + 3;
 	}
+	public class Forgotten_Carbon : MusicTrack<SmogStormTrackSlot> {
+		public override Composer Composer { get; } = Chee;
+	}
 	public record class AshenBossTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.AshenBoss;
 		public override int SortingIndex => AshenFactoryTrackSlot.index + 4;
