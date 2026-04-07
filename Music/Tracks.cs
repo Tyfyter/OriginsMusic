@@ -1,7 +1,9 @@
 ﻿using MonoMod.Cil;
 using NVorbis;
 using Origins.NPCs.MiscB.Shimmer_Construct;
+using Origins.Tiles.Ashen;
 using PegasusLib;
+using ProceduralMusicLib;
 using System;
 using System.Text.RegularExpressions;
 using Terraria;
@@ -137,6 +139,30 @@ namespace OriginsMusic.Music {
 	public record class AncientAshenTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.AncientAshen;
 		public override int SortingIndex => AshenFactoryTrackSlot.index + 5;
+	}
+	public record class NuclearSuicideTrackSlot : TrackSlot {
+		protected override ref int TrackController => ref Slot.OhFuckTheBombsAreDroppingThisIsTheEndWeAreAllGoingToDie;
+		public override int SortingIndex => AshenFactoryTrackSlot.index + 6;
+	}
+	public class Revelation : MusicTrack<NuclearSuicideTrackSlot> {
+		public override Composer Composer { get; } = Chee;
+		public override void LoadTrack() {
+			TrackID = (int)ModContent.GetInstance<ProceduralMusicLib.ProceduralMusicLib>().Call(
+				ProceduralMusicLib.ProceduralMusicLib.CallType.AddMusic,
+				$"{nameof(OriginsMusic)}/Music/Revelation"
+			);
+			Main.OnPostDraw += InitializeTrackEnd;
+		}
+
+		void InitializeTrackEnd(Microsoft.Xna.Framework.GameTime obj) {
+			if (Main.audioSystem is not LegacyAudioSystem audioSystem || !audioSystem.AudioTracks.IndexInRange(TrackID) || audioSystem.AudioTracks[TrackID] is not ChanneledAudioTrack actualTrack) return;
+			Main.OnPostDraw -= InitializeTrackEnd;
+			actualTrack.OnTrackEnd += Administrator_Panel.Nuke_Launch_Program.EndMusic;
+		}
+
+		public override void UpdatePlaying() {
+			Main.musicNoCrossFade[TrackID] = true;
+		}
 	}
 	#endregion
 	#region Fiberglass
@@ -277,7 +303,7 @@ namespace OriginsMusic.Music {
 		public override void UpdatePlaying() {
 			if (Main.curMusic != TrackID) return;
 			float life = 0;
-			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Origins.NPCs.MiscB.Shimmer_Construct.Shimmer_Construct>());
+			int npcIndex = NPC.FindFirstNPC(ModContent.NPCType<Shimmer_Construct>());
 			float volumeMult = 1f;
 			if (npcIndex != -1) {
 				NPC npc = Main.npc[npcIndex];

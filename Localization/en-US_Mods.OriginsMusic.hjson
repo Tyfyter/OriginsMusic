@@ -168,8 +168,8 @@ Tracks: {
 	}
 
 	The_Dive: {
-		Subtitle: Terraria Origins Music
 		DisplayName: The Dive
+		Subtitle: Terraria Origins Music
 	}
 
 	Defiled_Otherworldly: {
@@ -179,6 +179,11 @@ Tracks: {
 
 	Forgotten_Carbon: {
 		DisplayName: Forgotten Carbon
+		Subtitle: Terraria Origins Music
+	}
+
+	Revelation: {
+		DisplayName: Revelation
 		Subtitle: Terraria Origins Music
 	}
 }
@@ -318,6 +323,11 @@ TrackSlots: {
 
 	SmogStormTrackSlot: {
 		DisplayName: Smog Storm
+		Description: ""
+	}
+
+	NuclearSuicideTrackSlot: {
+		DisplayName: Imminent Nuclear Annihilation
 		Description: ""
 	}
 }

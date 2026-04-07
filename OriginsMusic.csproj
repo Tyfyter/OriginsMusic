@@ -1,4 +1,4 @@
-
+﻿
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\tModLoader.targets" />
   <PropertyGroup>
@@ -10,7 +10,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PegasusLib">
-      <HintPath>..\ModAssemblies\PegasusLib_v1.0.4.7.dll</HintPath>
+      <HintPath>..\ModAssemblies\PegasusLib_v1.1.4.3.dll</HintPath>
+    </Reference>
+    <Reference Include="ProceduralMusicLib">
+      <HintPath>..\ModAssemblies\ProceduralMusicLib_v1.0.0.3.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

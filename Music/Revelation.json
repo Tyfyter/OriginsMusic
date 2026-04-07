@@ -1,0 +1,17 @@
+{
+	"Chunks": {
+		"Track": {
+			"AudioPath": "OriginsMusic/Music/Revelation"
+		}
+	},
+	"Segments": {
+		"Start": {
+			"Keyframes": [
+				{
+					"Type": "Audio",
+					"Chunk": "Track"
+				}
+			]
+		}
+	}
+}
