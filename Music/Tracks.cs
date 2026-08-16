@@ -22,7 +22,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => index;
 	}
 	public class Stolen_Memories : MusicTrack<DefiledTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public class Wasteland : MusicTrack<DefiledTrackSlot> {
 		public override Composer Composer { get; } = Goji;
@@ -32,7 +32,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => DefiledTrackSlot.index + 1;
 	}
 	public class Heart_Of_The_Beast : MusicTrack<UndergroundDefiledTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public class Dread_Heart : MusicTrack<UndergroundDefiledTrackSlot> {
 		public override Composer Composer { get; } = Goji;
@@ -42,7 +42,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => DefiledTrackSlot.index + 2;
 	}
 	public class ADJUDICATE : MusicTrack<DefiledBossTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public class ARBITRATE : MusicTrack<DefiledBossTrackSlot> {
 		public override Composer Composer { get; } = Goji;
@@ -52,7 +52,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => DefiledTrackSlot.index + 3;
 	}
 	public class Shattered_Topography_Old : MusicTrack<AncientDefiledTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public record class OtherworldlyDefiledTrackSlot : TrackSlot
 	{
@@ -61,7 +61,7 @@ namespace OriginsMusic.Music {
 	}
 	public class Defiled_Otherworldly : MusicTrack<OtherworldlyDefiledTrackSlot>
 	{
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	#endregion
 	#region Riven Hive
@@ -71,7 +71,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => index;
 	}
 	public class Scinditur_Pereunt : MusicTrack<RivenTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public class Skin : MusicTrack<RivenTrackSlot> {
 		public override Composer Composer { get; } = Goji;
@@ -81,7 +81,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => RivenTrackSlot.index + 1;
 	}
 	public class Festering_Hives : MusicTrack<UndergroundRivenTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public class Internal_Organism : MusicTrack<UndergroundRivenTrackSlot> {
 		public override Composer Composer { get; } = Goji;
@@ -91,7 +91,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => RivenTrackSlot.index + 2;
 	}
 	public class Ad_Laceratur : MusicTrack<RivenBossTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public class Frayed_And_Stretched : MusicTrack<RivenBossTrackSlot> {
 		public override Composer Composer { get; } = Goji;
@@ -101,7 +101,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => RivenTrackSlot.index + 3;
 	}
 	public class This_Ocean_Of_Alkahest : MusicTrack<RivenOceanTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public class Alkahest : MusicTrack<RivenOceanTrackSlot> {
 		public override Composer Composer { get; } = Goji;
@@ -117,6 +117,9 @@ namespace OriginsMusic.Music {
 		protected override ref int TrackController => ref Slot.AshenFactory;
 		public override int SortingIndex => index;
 	}
+	public class Cereclothed_Ashes : MusicTrack<AshenFactoryTrackSlot> {
+		public override Composer Composer { get; } = Leeleue;
+	}
 	public record class AshenMinesTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.AshenMines;
 		public override int SortingIndex => AshenFactoryTrackSlot.index + 1;
@@ -125,16 +128,22 @@ namespace OriginsMusic.Music {
 		protected override ref int TrackController => ref Slot.AshenScrapyard;
 		public override int SortingIndex => AshenFactoryTrackSlot.index + 2;
 	}
+	public class Trash_World : MusicTrack<AshenScrapyardTrackSlot> {
+		public override Composer Composer { get; } = Leeleue;
+	}
 	public record class SmogStormTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.SmogStorm;
 		public override int SortingIndex => AshenFactoryTrackSlot.index + 3;
 	}
 	public class Forgotten_Carbon : MusicTrack<SmogStormTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public record class AshenBossTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.AshenBoss;
 		public override int SortingIndex => AshenFactoryTrackSlot.index + 4;
+	}
+	public class War_Machine : MusicTrack<AshenBossTrackSlot> {
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public record class AncientAshenTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.AncientAshen;
@@ -145,7 +154,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => AshenFactoryTrackSlot.index + 6;
 	}
 	public class Revelation : MusicTrack<NuclearSuicideTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 		public override void LoadTrack() {
 			TrackID = (int)ModContent.GetInstance<ProceduralMusicLib.ProceduralMusicLib>().Call(
 				ProceduralMusicLib.ProceduralMusicLib.CallType.AddMusic,
@@ -172,7 +181,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => index;
 	}
 	public class The_Room_Before : MusicTrack<FiberglassTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public class Skulking : MusicTrack<FiberglassTrackSlot> {
 		public override Composer Composer { get; } = Goji;
@@ -185,17 +194,21 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => index;
 	}
 	public class Below_The_Brine : MusicTrack<BrinePoolTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	public class Deep_Luminance : MusicTrack<BrinePoolTrackSlot> {
 		public override Composer Composer { get; } = Goji;
 	}
-	public record class BrineBossTrackSlot : TrackSlot {
+    public class Beneath_The_Depths : MusicTrack<BrinePoolTrackSlot>
+    {
+        public override Composer Composer { get; } = Taki;
+    }
+    public record class BrineBossTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.LostDiver;
 		public override int SortingIndex => BrinePoolTrackSlot.index + 1;
 	}
 	public class Chee_Brine_Boss : MusicTrack<BrineBossTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 		public override bool AutoRegisterMusicDisplay => false;
 		int mildewCarrionTrack;
 		int crownJewelTrack;
@@ -243,7 +256,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => BrinePoolTrackSlot.index + 2;
 	}
 	public class Only_the_Brave : MusicTrack<AncientBrinePoolTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	#endregion
 	#region Shimmer Construct
@@ -253,7 +266,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => index;
 	}
 	public class A_Mothers_Soft_Side : MusicTrack<ShimmerBossTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 		public override bool AutoRegisterMusicDisplay => false;
 		int lowHealthTrack;
 		public override void LoadTrack() {
@@ -329,7 +342,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => ShimmerBossTrackSlot.index + 1;
 	}
 	public class Pocket_Dimension : MusicTrack<ShimmerPhase3BossTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 		public override void LoadTrack() {
 			Mod pml = ModLoader.GetMod("ProceduralMusicLib");
 			TrackID = (int)pml.Call("AddMusic", Mod, "Music/Pocket_Dimension");
@@ -358,7 +371,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => ShimmerBossTrackSlot.index + 2;
 	}
 	public class The_Dive : MusicTrack<TheDiveTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	#endregion Shimmer Construct
 	#region Dusk
@@ -368,7 +381,7 @@ namespace OriginsMusic.Music {
 		public override int SortingIndex => index;
 	}
 	public class Dancing_With_Ghosts : MusicTrack<DuskTrackSlot> {
-		public override Composer Composer { get; } = Chee;
+		public override Composer Composer { get; } = Leeleue;
 	}
 	#endregion
 }

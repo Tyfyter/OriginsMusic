@@ -7,9 +7,12 @@ namespace OriginsMusic.Music {
 		public override IEnumerable<AMusicTrack> GetMusicTracks() => OriginsMusic.tracksBySlot.Values.Select(Enumerable.First);
 	}
 	public class CheeTrackSet : TrackSet {
-		public override IEnumerable<AMusicTrack> GetMusicTracks() => OriginsMusic.tracksByID.Values.Where(track => track.Composer == Composer.Chee);
+		public override IEnumerable<AMusicTrack> GetMusicTracks() => OriginsMusic.tracksByID.Values.Where(track => track.Composer == Composer.Leeleue);
 	}
 	public class GojiTrackSet : TrackSet {
 		public override IEnumerable<AMusicTrack> GetMusicTracks() => OriginsMusic.tracksByID.Values.Where(track => track.Composer == Composer.Goji);
+	}
+	public class TakiTrackSet : TrackSet {
+		public override IEnumerable<AMusicTrack> GetMusicTracks() => OriginsMusic.tracksByID.Values.Where(track => track.Composer == Composer.Taki);
 	}
 }

@@ -137,11 +137,6 @@ Tracks: {
 		Subtitle: Origins Music Vol. II
 	}
 
-	Chee_Brine_Boss: {
-		DisplayName: What?
-		Subtitle: Origins Music Vol. I?
-	}
-
 	Shimmer_Construct: {
 		DisplayName: Shimmer Construct
 		Subtitle: Terraria Origins Music
@@ -149,42 +144,67 @@ Tracks: {
 
 	A_Mothers_Soft_Side: {
 		DisplayName: A Mothers Soft Side
-		Subtitle: Terraria Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Mythopoeic_Lattice: {
-		DisplayName: Mythopoeic_Lattice
-		Subtitle: Terraria Origins Music
+		DisplayName: Mythopoeic Lattice
+		Subtitle: Origins Music Vol. I
 	}
 
 	Scinditur_Pereunt: {
 		DisplayName: Scinditur Pereunt
-		Subtitle: Terraria Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Pocket_Dimension: {
 		DisplayName: Pocket Dimension
-		Subtitle: Terraria Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	The_Dive: {
 		DisplayName: The Dive
-		Subtitle: Terraria Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Defiled_Otherworldly: {
 		DisplayName: "{§Defiled} Otherworldly"
-		Subtitle: Terraria Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Forgotten_Carbon: {
 		DisplayName: Forgotten Carbon
-		Subtitle: Terraria Origins Music
+		Subtitle: Origins Music Vol. I
 	}
 
 	Revelation: {
 		DisplayName: Revelation
+		Subtitle: Origins Music Vol. I
+	}
+
+	Beneath_The_Depths: {
+		DisplayName: Beneath The Depths
+		Subtitle: Origins Music Vol. III
+	}
+
+	Chee_Brine_Boss: {
 		Subtitle: Terraria Origins Music
+		DisplayName: Chee Brine Boss
+	}
+
+	War_Machine: {
+		Subtitle: Terraria Origins Music
+		DisplayName: War Machine
+	}
+
+	Trash_World: {
+		Subtitle: Terraria Origins Music
+		DisplayName: Trash World
+	}
+
+	Cereclothed_Ashes: {
+		Subtitle: Terraria Origins Music
+		DisplayName: Cereclothed Ashes
 	}
 }
 
@@ -195,12 +215,17 @@ TrackSets: {
 	}
 
 	CheeTrackSet: {
-		DisplayName: by {$Mods.OriginsMusic.Composers.Chee}
+		DisplayName: by {$Mods.OriginsMusic.Composers.Leeleue}
 		Description: ""
 	}
 
 	GojiTrackSet: {
 		DisplayName: by {$Mods.OriginsMusic.Composers.Goji}
+		Description: ""
+	}
+
+	TakiTrackSet: {
+		DisplayName: by {$Mods.OriginsMusic.Composers.Taki}
 		Description: ""
 	}
 }
@@ -287,8 +312,8 @@ TrackSlots: {
 	}
 
 	TheDiveTrackSlot: {
-		Description: ""
 		DisplayName: The Dive
+		Description: ""
 	}
 
 	OtherworldlyDefiledTrackSlot: {
@@ -302,7 +327,7 @@ TrackSlots: {
 	}
 
 	AshenBossTrackSlot: {
-		DisplayName: Ashen Boss
+		DisplayName: Trenchmaker
 		Description: ""
 	}
 
@@ -333,8 +358,9 @@ TrackSlots: {
 }
 
 Composers: {
-	Chee: chrersis
+	Leeleue: Leeleue
 	Goji: gojisturba
+	Taki: Taki
 }
 
 Configs: {

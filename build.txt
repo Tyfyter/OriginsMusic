@@ -1,5 +1,5 @@
 displayName = Terraria Origins Music
-author = Moonlight Glint, chrersis, and gojisturba
+author = Origins Dev Team
 version = 0.5.3
 modReferences = Origins, PegasusLib, ProceduralMusicLib
 side = Client
