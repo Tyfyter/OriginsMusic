@@ -198,13 +198,18 @@ Tracks: {
 	}
 
 	Trash_World: {
-		Subtitle: Terraria Origins Music
 		DisplayName: Trash World
+		Subtitle: Origins Music Vol. I
 	}
 
 	Cereclothed_Ashes: {
-		Subtitle: Terraria Origins Music
 		DisplayName: Cereclothed Ashes
+		Subtitle: Origins Music Vol. I
+	}
+
+	Static_Mind: {
+		Subtitle: Terraria Origins Music
+		DisplayName: Static Mind
 	}
 }
 

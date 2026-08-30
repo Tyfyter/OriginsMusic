@@ -27,6 +27,9 @@ namespace OriginsMusic.Music {
 	public class Wasteland : MusicTrack<DefiledTrackSlot> {
 		public override Composer Composer { get; } = Goji;
 	}
+	public class Static_Mind : MusicTrack<DefiledTrackSlot> {
+		public override Composer Composer { get; } = Taki;
+	}
 	public record class UndergroundDefiledTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.UndergroundDefiled;
 		public override int SortingIndex => DefiledTrackSlot.index + 1;
