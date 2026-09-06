@@ -187,14 +187,9 @@ Tracks: {
 		Subtitle: Origins Music Vol. III
 	}
 
-	Chee_Brine_Boss: {
-		Subtitle: Terraria Origins Music
-		DisplayName: Chee Brine Boss
-	}
-
 	War_Machine: {
-		Subtitle: Terraria Origins Music
 		DisplayName: War Machine
+		Subtitle: Origins Music Vol. I
 	}
 
 	Trash_World: {
