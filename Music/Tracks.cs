@@ -112,10 +112,13 @@ namespace OriginsMusic.Music {
 	public record class AncientRivenTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.AncientRiven;
 		public override int SortingIndex => RivenTrackSlot.index + 4;
-	}
-	#endregion
-	#region Ashen
-	public record class AshenFactoryTrackSlot : TrackSlot {
+    }
+    public class Raving_Riven : MusicTrack<AncientRivenTrackSlot> {
+        public override Composer Composer { get; } = Leeleue;
+    }
+    #endregion
+    #region Ashen
+    public record class AshenFactoryTrackSlot : TrackSlot {
 		public const int index = RivenTrackSlot.index + 5;
 		protected override ref int TrackController => ref Slot.AshenFactory;
 		public override int SortingIndex => index;

@@ -206,6 +206,16 @@ Tracks: {
 		Subtitle: Terraria Origins Music
 		DisplayName: Static Mind
 	}
+
+	Chee_Brine_Boss: {
+		DisplayName: Chee Brine Boss
+		Subtitle: Terraria Origins Music
+	}
+
+	Raving_Riven: {
+		DisplayName: Raving Riven
+		Subtitle: Origins Music Vol. I
+	}
 }
 
 TrackSets: {
@@ -247,7 +257,7 @@ TrackSlots: {
 	}
 
 	AncientDefiledTrackSlot: {
-		DisplayName: Ancient {§Defiled_Wastelands} Music Box
+		DisplayName: Ancient {§Defiled_Wastelands}
 		Description: ""
 	}
 
@@ -272,7 +282,7 @@ TrackSlots: {
 	}
 
 	AncientRivenTrackSlot: {
-		DisplayName: Ancient {§Riven_Hive} Music Box
+		DisplayName: Ancient {§Riven_Hive}
 		Description: ""
 	}
 
@@ -282,7 +292,7 @@ TrackSlots: {
 	}
 
 	AncientBrinePoolTrackSlot: {
-		DisplayName: Ancient {§Brine_Pool} Music Box
+		DisplayName: Ancient {§Brine_Pool}
 		Description: ""
 	}
 
