@@ -137,6 +137,9 @@ namespace OriginsMusic.Music {
 	public class Trash_World : MusicTrack<AshenScrapyardTrackSlot> {
 		public override Composer Composer { get; } = Leeleue;
 	}
+	public class Terminus : MusicTrack<AshenScrapyardTrackSlot> {
+		public override Composer Composer { get; } = Taki;
+	}
 	public record class SmogStormTrackSlot : TrackSlot {
 		protected override ref int TrackController => ref Slot.SmogStorm;
 		public override int SortingIndex => AshenFactoryTrackSlot.index + 3;

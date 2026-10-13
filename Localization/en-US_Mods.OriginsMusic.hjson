@@ -216,6 +216,11 @@ Tracks: {
 		DisplayName: Raving Riven
 		Subtitle: Origins Music Vol. I
 	}
+
+	Terminus: {
+		DisplayName: Terminus
+		Subtitle: Origins Music Vol. III
+	}
 }
 
 TrackSets: {
