@@ -182,6 +182,13 @@ namespace OriginsMusic.Music {
 			Main.musicNoCrossFade[TrackID] = true;
 		}
 	}
+	public record class StarSoldier : TrackSlot {
+		protected override ref int TrackController => ref Slot.StarSoldier;
+		public override int SortingIndex => AshenFactoryTrackSlot.index + 7;
+	}
+	public class Berzerker : MusicTrack<StarSoldier> {
+		public override Composer Composer { get; } = Taki;
+	}
 	#endregion
 	#region Fiberglass
 	public record class FiberglassTrackSlot : TrackSlot {

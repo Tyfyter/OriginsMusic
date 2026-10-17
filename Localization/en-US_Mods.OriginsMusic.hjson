@@ -221,6 +221,16 @@ Tracks: {
 		DisplayName: Terminus
 		Subtitle: Origins Music Vol. III
 	}
+
+	Bezerker: {
+		Subtitle: Terraria Origins Music
+		DisplayName: Bezerker
+	}
+
+	Berzerker: {
+		Subtitle: Terraria Origins Music
+		DisplayName: Berzerker
+	}
 }
 
 TrackSets: {
@@ -369,6 +379,11 @@ TrackSlots: {
 	NuclearSuicideTrackSlot: {
 		DisplayName: Imminent Nuclear Annihilation
 		Description: ""
+	}
+
+	StarSoldier: {
+		Description: ""
+		DisplayName: Star Soldier
 	}
 }
 
