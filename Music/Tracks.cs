@@ -171,7 +171,7 @@ namespace OriginsMusic.Music {
 			);
 			Main.OnPostDraw += InitializeTrackEnd;
 		}
-
+		[NoJIT]
 		void InitializeTrackEnd(Microsoft.Xna.Framework.GameTime obj) {
 			if (Main.audioSystem is not LegacyAudioSystem audioSystem || !audioSystem.AudioTracks.IndexInRange(TrackID) || audioSystem.AudioTracks[TrackID] is not ChanneledAudioTrack actualTrack) return;
 			Main.OnPostDraw -= InitializeTrackEnd;
